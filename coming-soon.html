@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Preparing for Launch — Attendant Corporate support</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#0D1B2A', secondary: '#F9F7F4', accentGold: '#B8964E', darkBg: '#070F1A', darkSurface: '#0D1B2E', darkCard: '#102035', darkText: '#F0EDE8', },
+                    fontFamily: { cormorant: ['Cormorant Garamond', 'serif'], outfit: ['Outfit', 'sans-serif'], },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .auth-bg {
+            background-image: linear-gradient(to right, rgba(7, 15, 26, 0.95), rgba(7, 15, 26, 0.7)), url('https://images.unsplash.com/photo-1544333346-633ac99d424b?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body
+    class="font-outfit antialiased bg-darkBg text-darkText min-h-screen flex items-center justify-center p-4 auth-bg transition-colors duration-300">
+    <div class="text-center max-w-2xl reveal">
+        <header class="mb-16">
+            <a href="index.html"
+                class="font-cormorant text-4xl font-bold uppercase text-accentGold mb-6 block tracking-widest leading-none leading-tight leading-loose leading-tight leading-tight leading-tight">Attendant</a>
+            <h1 class="font-cormorant text-2xl font-semibold opacity-60 italic mb-2 tracking-tight">The Future of
+                Attention is Preparing.</h1>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 italic">Global Deployment Cycle: Phase
+                4 Nodes Activating.</p>
+        </header>
+
+        <div class="flex items-center justify-center gap-12 font-cormorant text-6xl md:text-8xl font-bold mb-16 opacity-80 reveal"
+            style="animation-delay: 0.2s">
+            <div class="flex flex-col"><span id="days">24</span><span
+                    class="text-[10px] uppercase tracking-widest font-bold font-outfit mt-4 opacity-40">Days</span>
+            </div>
+            <div class="flex flex-col"><span id="hours">12</span><span
+                    class="text-[10px] uppercase tracking-widest font-bold font-outfit mt-4 opacity-40">Hours</span>
+            </div>
+            <div class="flex flex-col"><span id="minutes">45</span><span
+                    class="text-[10px] uppercase tracking-widest font-bold font-outfit mt-4 opacity-40">Minutes</span>
+            </div>
+        </div>
+
+        <p class="text-lg text-secondary/60 mb-12 italic max-w-sm mx-auto leading-relaxed">"One cannot rush
+            excellence—but one can prepare for its arrival. Join the pilot registry today."</p>
+
+        <form action="#" class="flex flex-col md:flex-row gap-4 max-w-md mx-auto reveal" style="animation-delay: 0.4s">
+            <input type="email" placeholder="Your work email..."
+                class="flex-grow bg-white/5 border border-white/10 p-5 rounded-sm focus:border-accentGold focus:outline-none placeholder:text-white/20">
+            <button type="submit"
+                class="btn-primary btn-gold-shimmer px-8 py-5 font-bold uppercase tracking-widest text-[10px]">Registry
+                Access</button>
+        </form>
+
+        <footer class="mt-24 text-[10px] font-bold uppercase tracking-[0.3em] opacity-20 select-none">DISCREET • SECURE
+            • ATTENTIVE</footer>
+    </div>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Very basic countdown logic for visual demo
+        setInterval(() => {
+            const m = document.getElementById('minutes');
+            let val = parseInt(m.innerText);
+            if (val > 0) m.innerText = (val - 1).toString().padStart(2, '0');
+            else m.innerText = "59";
+        }, 60000);
+    </script>
+</body>
+
+</html>

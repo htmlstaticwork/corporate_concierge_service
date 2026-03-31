@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Dashboard — Attendant Corporate Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#0D1B2A', secondary: '#F9F7F4', accentGold: '#B8964E', darkBg: '#070F1A', darkSurface: '#0D1B2E', darkCard: '#102035', darkText: '#F0EDE8', },
+                    fontFamily: { cormorant: ['Cormorant Garamond', 'serif'], outfit: ['Outfit', 'sans-serif'], },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+            height: 100vh;
+        }
+
+        .dashboard-main {
+            min-width: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .view-section {
+            min-width: 0;
+        }
+
+        .view-section:not(.active) {
+            display: none;
+        }
+
+        .view-section.active {
+            animation: presenceReveal 0.8s ease forwards;
+        }
+
+        #view-chat {
+            min-height: 100%;
+        }
+
+        #view-chat .custom-scrollbar {
+            min-height: 0;
+        }
+
+        .mobile-sidebar-toggle,
+        .mobile-dashboard-header,
+        .mobile-sidebar,
+        .mobile-sidebar-scrim {
+            display: none;
+        }
+
+        .dashboard-theme-toggle {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            color: rgba(240, 237, 232, 0.78);
+        }
+
+        .dashboard-theme-toggle:hover {
+            border-color: rgba(184, 150, 78, 0.45);
+            color: #B8964E;
+            background: rgba(184, 150, 78, 0.06);
+        }
+
+        .sidebar-ui .brand-logo-text,
+        .mobile-sidebar .brand-logo-text {
+            font-size: 1.8rem;
+        }
+
+        .sidebar-ui nav .view-trigger,
+        .mobile-sidebar nav .view-trigger {
+            font-size: 1rem;
+        }
+
+        [data-theme="light"] body {
+            background-color: #F9F7F4 !important;
+            color: #0D1B2A !important;
+        }
+
+        [data-theme="light"] .dashboard-main,
+        [data-theme="light"] .bg-darkBg {
+            background-color: #F9F7F4 !important;
+        }
+
+        [data-theme="light"] .sidebar-ui,
+        [data-theme="light"] .mobile-sidebar {
+            background: #FFFFFF !important;
+            border-color: rgba(13, 27, 42, 0.08) !important;
+            color: #0D1B2A !important;
+            box-shadow: -24px 0 60px rgba(13, 27, 42, 0.12);
+        }
+
+        [data-theme="light"] .mobile-sidebar-toggle {
+            background: rgba(255, 255, 255, 0.96);
+            color: #0D1B2A;
+            border-color: rgba(13, 27, 42, 0.12);
+            box-shadow: 0 20px 45px rgba(13, 27, 42, 0.16);
+        }
+
+        [data-theme="light"] .mobile-dashboard-header {
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom-color: rgba(13, 27, 42, 0.08);
+            box-shadow: 0 18px 40px rgba(13, 27, 42, 0.12);
+        }
+
+        [data-theme="light"] .mobile-sidebar-scrim {
+            background: rgba(13, 27, 42, 0.28);
+        }
+
+        [data-theme="light"] .dashboard-theme-toggle {
+            border-color: rgba(13, 27, 42, 0.12);
+            background: rgba(13, 27, 42, 0.02);
+            color: rgba(13, 27, 42, 0.72);
+        }
+
+        [data-theme="light"] .bg-darkSurface {
+            background-color: #FFFFFF !important;
+        }
+
+        [data-theme="light"] .bg-white\/5 {
+            background-color: rgba(13, 27, 42, 0.04) !important;
+        }
+
+        [data-theme="light"] .border-white\/5 {
+            border-color: rgba(13, 27, 42, 0.08) !important;
+        }
+
+        [data-theme="light"] .border-white\/10 {
+            border-color: rgba(13, 27, 42, 0.12) !important;
+        }
+
+        [data-theme="light"] .text-white,
+        [data-theme="light"] .text-darkText {
+            color: #0D1B2A !important;
+        }
+
+        [data-theme="light"] .text-white\/40 {
+            color: rgba(13, 27, 42, 0.5) !important;
+        }
+
+        [data-theme="light"] .placeholder\:text-white\/10::placeholder {
+            color: rgba(13, 27, 42, 0.22) !important;
+        }
+
+        [data-theme="light"] .bg-primary\/40 {
+            background-color: rgba(13, 27, 42, 0.08) !important;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .sidebar-ui {
+                display: none;
+            }
+
+            .dashboard-main {
+                height: 100vh;
+            }
+
+            .mobile-dashboard-header {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5.25rem;
+                align-items: center;
+                justify-content: center;
+                padding: 0 5.5rem 0 1rem;
+                background: rgba(13, 27, 46, 0.96);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+                z-index: 175;
+            }
+
+            .mobile-dashboard-header .brand-logo-link {
+                margin-bottom: 0;
+            }
+
+            .mobile-dashboard-header .brand-logo-mark {
+                width: 2.25rem;
+                height: 2.25rem;
+            }
+
+            .mobile-dashboard-header .brand-logo-text {
+                font-size: 1.6rem;
+            }
+
+            .mobile-sidebar-toggle {
+                display: inline-flex;
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 181;
+                align-items: center;
+                justify-content: center;
+                width: 3rem;
+                height: 3rem;
+                border: 1px solid rgba(184, 150, 78, 0.35);
+                background: rgba(13, 27, 46, 0.96);
+                color: #F0EDE8;
+                box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            }
+
+            .mobile-sidebar-scrim {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(7, 15, 26, 0.72);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.25s ease;
+                z-index: 160;
+            }
+
+            .mobile-sidebar {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 100vw;
+                max-width: 100vw;
+                height: 100vh;
+                padding: 6rem 1.5rem 1.5rem;
+                background: #0D1B2E;
+                border-left: 1px solid rgba(255, 255, 255, 0.06);
+                box-shadow: -24px 0 60px rgba(0, 0, 0, 0.45);
+                transform: translateX(0);
+                transition: opacity 0.25s ease;
+                z-index: 170;
+                flex-direction: column;
+                justify-content: space-between;
+                overflow-y: auto;
+            }
+
+            .mobile-sidebar.open {
+                display: flex;
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .mobile-sidebar-scrim.open {
+                display: block;
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .dashboard-main {
+                padding: 11.5rem 1rem 1.25rem !important;
+            }
+
+            .view-section > header {
+                padding-top: 2rem;
+                margin-bottom: 1.75rem;
+            }
+
+            .view-section > header h1 {
+                font-size: clamp(2.5rem, 13vw, 3.5rem);
+                line-height: 0.95;
+            }
+
+            .view-section > header p,
+            #view-chat header > div:last-child,
+            #view-map .relative.z-10 p,
+            #view-archive thead {
+                font-size: 0.55rem;
+                letter-spacing: 0.18em;
+            }
+
+            #view-overview .grid,
+            #view-studio .grid,
+            #view-profile .grid,
+            #view-map .relative.z-10.grid {
+                gap: 1rem;
+            }
+
+            #view-overview .bg-darkSurface,
+            #view-studio .group,
+            #view-profile .space-y-12 > div,
+            #view-map .relative.z-10 > div {
+                padding: 1.25rem;
+            }
+
+            #view-submit .max-w-4xl,
+            #view-profile .max-w-4xl {
+                padding: 1.25rem;
+            }
+
+            #view-submit form > div:last-child {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            #view-archive .overflow-x-auto {
+                margin: 0 -0.25rem;
+                padding-bottom: 0.5rem;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            #view-archive table {
+                min-width: 34rem;
+            }
+
+            #view-archive th,
+            #view-archive td {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                padding-right: 0.75rem;
+                vertical-align: top;
+            }
+
+            #view-archive tbody {
+                font-size: 0.7rem;
+            }
+
+            #view-archive td:nth-child(3) {
+                min-width: 11rem;
+                white-space: normal;
+            }
+
+            #view-chat header {
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+            }
+
+            #view-chat .custom-scrollbar {
+                padding-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            #view-chat .max-w-lg {
+                max-width: 100%;
+            }
+
+            #view-chat input {
+                padding: 1.125rem 7.5rem 1.125rem 1rem;
+                font-size: 1rem;
+            }
+
+            #view-chat .absolute.top-1\/2 {
+                right: 1rem;
+                font-size: 0.625rem;
+            }
+
+            #view-map > div.w-full.h-2\/3 {
+                height: auto;
+                min-height: 24rem;
+                padding: 1rem;
+            }
+
+        }
+
+        #view-chat header > div:first-child {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="font-outfit antialiased bg-darkBg text-darkText overflow-hidden">
+    <div class="dashboard-container">
+        <!-- Dashboard Sidebar -->
+        <aside
+            class="sidebar-ui hidden bg-darkSurface border-r border-white/5 p-8 justify-between relative shadow-2xl z-50 overflow-y-auto lg:flex lg:flex-col">
+            <div>
+                <a href="index.html" class="brand-logo-link mb-16">
+                    <div class="brand-logo-mark">
+                        <svg class="brand-logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span class="brand-logo-text brand-logo-text-theme">Attendant</span>
+                </a>
+                <nav class="space-y-4">
+                    <button onclick="switchView('overview')" data-view="overview"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all bg-accentGold text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span> Overview
+                    </button>
+                    <button onclick="switchView('submit')" data-view="submit"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accentGold"></span> Request New
+                    </button>
+                    <button onclick="switchView('archive')" data-view="archive"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accentGold/40"></span> Archive
+                    </button>
+                    <button onclick="switchView('chat')" data-view="chat"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Active Liaison
+                    </button>
+                    <button onclick="switchView('studio')" data-view="studio"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accentGold/40"></span> Gift Studio
+                    </button>
+                    <button onclick="switchView('map')" data-view="map"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accentGold/40"></span> Node Map
+                    </button>
+                </nav>
+
+                <button type="button"
+                    class="dashboard-theme-toggle theme-toggle mt-8 flex w-full items-center justify-between rounded-sm px-4 py-4 text-[10px] font-bold uppercase tracking-widest transition-colors">
+                    <span class="flex items-center gap-3">
+                        <svg class="sun-icon h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+                        </svg>
+                        <svg class="moon-icon hidden h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                        <span>Theme</span>
+                    </span>
+                    <span class="theme-toggle-label">Light</span>
+                </button>
+            </div>
+
+            <div class="mt-12 border-t border-white/5 pt-12 text-left">
+                <a href="index.html"
+                    class="mb-8 flex w-full items-center justify-between rounded-sm border border-red-400/30 px-4 py-4 text-[10px] uppercase font-bold tracking-widest text-red-400 transition-colors hover:border-red-300 hover:text-red-300">
+                    <span>Logout</span>
+                    <span>&rarr;</span>
+                </a>
+                <button onclick="switchView('profile')" data-view="profile"
+                    class="view-trigger flex items-center gap-4 group">
+                    <img src="https://images.unsplash.com/photo-1573496359142-f22b93d89a3a?w=100&q=80"
+                        class="w-10 h-10 rounded-full grayscale hover:grayscale-0 transition-all border border-accentGold/40">
+                    <div class="text-left">
+                        <h4 class="text-xs font-bold text-white group-hover:text-accentGold transition-colors">Elena
+                            Petrova</h4>
+                        <p class="text-[9px] uppercase tracking-widest text-accentGold font-bold">Premier Member</p>
+                    </div>
+                </button>
+            </div>
+        </aside>
+
+        <div class="mobile-dashboard-header lg:hidden">
+            <a href="index.html" class="brand-logo-link">
+                <div class="brand-logo-mark">
+                    <svg class="brand-logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <span class="brand-logo-text brand-logo-text-theme">Attendant</span>
+            </a>
+        </div>
+
+        <button type="button" class="mobile-sidebar-toggle lg:hidden" onclick="toggleMobileMenu()"
+            aria-label="Open dashboard menu" aria-expanded="false">
+            <span class="sr-only">Open dashboard menu</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+        </button>
+
+        <div class="mobile-sidebar-scrim lg:hidden" onclick="closeMobileMenu()"></div>
+
+        <aside class="mobile-sidebar lg:hidden">
+            <div>
+                <a href="index.html" class="brand-logo-link mb-12">
+                    <div class="brand-logo-mark">
+                        <svg class="brand-logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span class="brand-logo-text brand-logo-text-theme">Attendant</span>
+                </a>
+                <nav class="space-y-4">
+                    <button onclick="switchView('overview')" data-view="overview"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all bg-accentGold text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span> Overview
+                    </button>
+                    <button onclick="switchView('submit')" data-view="submit"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accentGold"></span> Request New
+                    </button>
+                    <button onclick="switchView('archive')" data-view="archive"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accentGold/40"></span> Archive
+                    </button>
+                    <button onclick="switchView('chat')" data-view="chat"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Active Liaison
+                    </button>
+                    <button onclick="switchView('studio')" data-view="studio"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accentGold/40"></span> Gift Studio
+                    </button>
+                    <button onclick="switchView('map')" data-view="map"
+                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accentGold/40"></span> Node Map
+                    </button>
+                </nav>
+
+                <button type="button"
+                    class="dashboard-theme-toggle theme-toggle mt-8 flex w-full items-center justify-between rounded-sm px-4 py-4 text-[10px] font-bold uppercase tracking-widest transition-colors">
+                    <span class="flex items-center gap-3">
+                        <svg class="sun-icon h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+                        </svg>
+                        <svg class="moon-icon hidden h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                        <span>Theme</span>
+                    </span>
+                    <span class="theme-toggle-label">Light</span>
+                </button>
+            </div>
+
+            <div class="mt-12 border-t border-white/5 pt-8 text-left">
+                <a href="index.html"
+                    class="mb-8 flex w-full items-center justify-between rounded-sm border border-red-400/30 px-4 py-4 text-[10px] uppercase font-bold tracking-widest text-red-400 transition-colors hover:border-red-300 hover:text-red-300">
+                    <span>Logout</span>
+                    <span>&rarr;</span>
+                </a>
+                <button onclick="switchView('profile')" data-view="profile"
+                    class="view-trigger flex items-center gap-4 group w-full text-left">
+                    <img src="https://images.unsplash.com/photo-1573496359142-f22b93d89a3a?w=100&q=80"
+                        class="w-10 h-10 rounded-full grayscale hover:grayscale-0 transition-all border border-accentGold/40">
+                    <div class="text-left">
+                        <h4 class="text-xs font-bold text-white group-hover:text-accentGold transition-colors">Elena
+                            Petrova</h4>
+                        <p class="text-[9px] uppercase tracking-widest text-accentGold font-bold">Premier Member</p>
+                    </div>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Dashboard Content Container (Toggled) -->
+        <main class="dashboard-main flex-grow bg-darkBg p-12 lg:p-16 relative">
+            <div class="absolute top-0 right-0 p-8 hidden lg:flex items-center gap-6 z-[100]">
+                <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-accentGold">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> HUB LONDON SECURE</div>
+            </div>
+
+            <!-- View 1: Overview -->
+            <section id="view-overview" class="view-section active">
+                <header class="mb-16">
+                    <h1 class="font-cormorant text-6xl font-bold text-white mb-2 leading-none">Evening, Elena.</h1>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-[#B8964E] font-outfit">Your dedicated
+                        pod is online — 0 pending requests.</p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-darkSurface p-10 border-2 border-accentGold rounded-sm shadow-xl animate-elevate">
+                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-accentGold mb-6">Time
+                            Restoration</h4>
+                        <div class="font-cormorant text-6xl font-bold mb-4">42.5h</div>
+                        <p class="text-xs text-white/40 leading-relaxed italic">Restored to you globally this quarter.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-darkSurface p-10 border border-white/5 rounded-sm hover:border-accentGold/20 transition-all">
+                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-6">Primary Concierge
+                        </h4>
+                        <div class="flex items-center gap-6"><img
+                                src="https://images.unsplash.com/photo-1544333346-633ac99d424b?w=100&q=80"
+                                class="w-16 h-16 rounded-full border border-accentGold/40">
+                            <div>
+                                <h4 class="font-cormorant text-3xl font-bold">Nadia</h4>
+                                <p class="text-[9px] uppercase font-bold tracking-widest text-[#B8964E] mt-1">Available
+                                    Now</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20">
+                    <h4
+                        class="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-10 border-b border-white/5 pb-4">
+                        Live Activity Feed</h4>
+                    <div class="space-y-6">
+                        <div
+                            class="flex items-start gap-8 opacity-40 hover:opacity-100 transition-all group cursor-pointer reveal">
+                            <span class="text-[10px] font-bold uppercase tracking-widest mt-1">Yesterday</span>
+                            <div>
+                                <h4
+                                    class="text-xs font-bold font-outfit uppercase tracking-widest mb-1 group-hover:text-accentGold transition-colors tracking-tight">
+                                    GIFT DISPATCHED</h4>
+                                <p class="text-sm font-light italic leading-loose">Bespoke hamper delivered to Regent's
+                                    Park address at 14:30. Mission accomplished.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- View 2: Submit Request -->
+            <section id="view-submit" class="view-section">
+                <header class="mb-16">
+                    <h1 class="font-cormorant text-6xl font-bold text-white mb-2 leading-none">New Request.</h1>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-accentGold font-outfit">What can we
+                        restore to your day?</p>
+                </header>
+                <div
+                    class="max-w-4xl bg-darkSurface border-2 border-accentGold p-12 rounded-sm shadow-2xl relative overflow-hidden">
+                    <form action="#" class="space-y-12">
+                        <div><label
+                                class="text-[9px] font-bold uppercase tracking-widest text-accentGold mb-4 block">SELECT
+                                CATEGORY</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4"><button type="button"
+                                    class="p-4 border border-accentGold bg-accentGold/10 text-accentGold font-bold text-[10px] uppercase tracking-widest rounded-sm">Errand</button><button
+                                    type="button"
+                                    class="p-4 border border-white/10 text-white/40 font-bold text-[10px] uppercase tracking-widest rounded-sm hover:border-accentGold">Curation</button><button
+                                    type="button"
+                                    class="p-4 border border-white/10 text-white/40 font-bold text-[10px] uppercase tracking-widest rounded-sm hover:border-accentGold">Travel</button><button
+                                    type="button"
+                                    class="p-4 border border-white/10 text-white/40 font-bold text-[10px] uppercase tracking-widest rounded-sm hover:border-accentGold">Health</button>
+                            </div>
+                        </div>
+                        <div><label
+                                class="text-[9px] font-bold uppercase tracking-widest text-accentGold mb-4 block">Detailed
+                                Directive</label><textarea
+                                placeholder="Specify dates, addresses, and any discretionary preferences..." rows="6"
+                                class="w-full bg-white/5 border border-white/10 p-6 rounded-sm focus:border-accentGold focus:outline-none dark:text-darkText italic text-lg leading-relaxed placeholder:text-white/10"></textarea>
+                        </div>
+                        <div class="flex justify-between items-center"><label
+                                class="flex items-center gap-4 text-[10px] uppercase font-bold tracking-widest text-white/40 cursor-pointer"><input
+                                    type="checkbox" class="w-4 h-4 bg-white/5 border-white/10"> High Priority Urgent (1h
+                                Trigger)</label><button type="submit"
+                                class="btn-primary btn-gold-shimmer px-16 py-5 whitespace-nowrap">Provision
+                                Request</button></div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- View 3: Archive -->
+            <section id="view-archive" class="view-section">
+                <header class="mb-16">
+                    <h1 class="font-cormorant text-6xl font-bold text-white mb-2 leading-none">Request Archive.</h1>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-accentGold font-outfit">Reviewing the
+                        history of attention.</p>
+                </header>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="border-b border-white/5">
+                            <tr class="text-[10px] uppercase font-bold tracking-widest text-white/40">
+                                <th class="py-6">Date</th>
+                                <th class="py-6">ID</th>
+                                <th class="py-6">Description</th>
+                                <th class="py-6">Liaison</th>
+                                <th class="py-6">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-xs font-medium">
+                            <tr
+                                class="border-b border-white/5 opacity-60 hover:opacity-100 transition-all cursor-pointer">
+                                <td class="py-6 whitespace-nowrap">Mar 10, 2024</td>
+                                <td class="py-6 uppercase text-accentGold font-bold">#49202</td>
+                                <td class="py-6 italic leading-relaxed">Dry cleaning pickup and delivery to Mayfair Tier
+                                    1 office lobby.</td>
+                                <td class="py-6">James H.</td>
+                                <td class="py-6"><span
+                                        class="px-3 py-1 bg-accentGold text-white text-[9px] font-bold uppercase tracking-widest rounded-sm">Completed</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- View 4: Chat -->
+            <section id="view-chat" class="view-section h-full flex flex-col">
+                <header class="flex items-center justify-between mb-16 border-b border-white/5 pb-8 relative">
+                    <div class="flex items-center gap-6"><img
+                            src="https://images.unsplash.com/photo-1544333346-633ac99d424b?w=100&q=80"
+                            class="w-12 h-12 rounded-full border border-accentGold animate-pulse">
+                        <div>
+                            <h4 class="font-cormorant text-3xl font-bold text-white">Nadia Osei</h4>
+                            <p class="text-[9px] uppercase font-bold tracking-widest text-accentGold">Senior Concierge
+                                Lead — Online Now</p>
+                        </div>
+                    </div>
+                    <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20 select-none">DISCREET
+                        SECURE LINK [ACTIVE]</div>
+                </header>
+                <div class="flex-grow overflow-y-auto mb-8 space-y-12 pr-4 custom-scrollbar">
+                    <div class="flex flex-col items-start max-w-lg reveal">
+                        <p
+                            class="bg-darkSurface p-6 border border-white/5 font-light leading-loose text-sm italic rounded-sm">
+                            "Good evening Elena. I've successfully finalized your itinerary for the Singapore offsite.
+                            Your personal dietary preferences have also been relayed precisely to the chef at Marina
+                            One. Is there anything else I can handle for you today?"</p><span
+                            class="text-[9px] font-bold uppercase tracking-widest text-white/20 mt-3 ml-2">17:42 —
+                            SECURE NODE</span>
+                    </div>
+                    <div class="flex flex-col items-end max-w-lg self-end ml-auto reveal" style="animation-delay: 0.1s">
+                        <p class="bg-accentGold p-6 text-primary font-bold leading-loose text-sm italic rounded-sm">
+                            "Excellent work as always, Nadia. Please ensure the car is positioned by the west exit, not
+                            the lobby. I prefer a discrete departure."</p><span
+                            class="text-[9px] font-bold uppercase tracking-widest text-accentGold/40 mt-3 mr-2">17:44 —
+                            YOUR NODE</span>
+                    </div>
+                </div>
+                <div class="mt-auto relative"><input type="text" placeholder="Type your instruction..."
+                        class="w-full bg-darkSurface border-t-2 border-accentGold p-8 focus:outline-none dark:text-darkText italic text-lg leading-relaxed placeholder:text-white/10"><button
+                        class="absolute top-1/2 right-12 -translate-y-1/2 text-accentGold font-bold uppercase text-xs tracking-widest hover:text-white transition-colors">Send
+                        Directive</button></div>
+            </section>
+
+            <!-- View 5: Gift Studio -->
+            <section id="view-studio" class="view-section">
+                <header class="mb-16 flex flex-col lg:flex-row justify-between items-end gap-12">
+                    <div class="max-w-2xl">
+                        <h1 class="font-cormorant text-6xl font-bold text-white mb-2 leading-none">Gift Studio.</h1>
+                        <p class="text-[11px] font-bold uppercase tracking-widest text-accentGold font-outfit">
+                            Exclusionary sourcing for personal and organizational milestones.</p>
+                    </div>
+                    <div class="flex gap-4"><button
+                            class="px-8 py-3 bg-accentGold text-white text-[10px] font-bold uppercase tracking-widest rounded-sm">Browse
+                            2024 Collection</button></div>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <div
+                        class="group relative aspect-square overflow-hidden rounded-sm cursor-pointer reveal shadow-2xl animate-elevate">
+                        <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&q=80"
+                            class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-primary/40 group-hover:bg-transparent transition-all"></div>
+                        <div class="absolute inset-x-0 bottom-0 p-8 text-white"><span
+                                class="text-[9px] font-bold uppercase tracking-widest text-accentGold mb-2 block">Bespoke
+                                Curation</span>
+                            <h4
+                                class="font-cormorant text-3xl font-bold italic leading-none translate-y-6 group-hover:translate-y-0 transition-transform">
+                                Artisan Hamper Series</h4>
+                        </div>
+                    </div>
+                    <div class="group relative aspect-square overflow-hidden rounded-sm cursor-pointer reveal shadow-2xl animate-elevate"
+                        style="animation-delay: 0.1s">
+                        <img src="https://images.unsplash.com/photo-1594040226829-7f251ab46d80?w=600&q=80"
+                            class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-x-0 bottom-0 p-8 text-white"><span
+                                class="text-[9px] font-bold uppercase tracking-widest text-accentGold mb-2 block">Hard
+                                Acquisitions</span>
+                            <h4
+                                class="font-cormorant text-3xl font-bold italic leading-none translate-y-6 group-hover:translate-y-0 transition-transform">
+                                Vintage Horology Node</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- View 6: Profile -->
+            <section id="view-profile" class="view-section">
+                <header class="mb-16">
+                    <h1 class="font-cormorant text-6xl font-bold text-white mb-2 leading-none">Preferences.</h1>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-accentGold font-outfit">Fine-tuning
+                        the lens of support.</p>
+                </header>
+                <div class="max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div class="space-y-12">
+                        <div>
+                            <h4
+                                class="text-[11px] font-bold uppercase tracking-widest text-[#B8964E] mb-6 border-b border-white/5 pb-4">
+                                Personal Detail Nodes</h4>
+                            <div class="space-y-6">
+                                <div><label
+                                        class="text-[9px] font-bold uppercase tracking-widest text-white/40 mb-2 block">Dietary
+                                        Restrictions</label><input type="text"
+                                        class="w-full bg-white/5 border-b border-white/10 py-3 italic text-sm focus:border-accentGold focus:outline-none"
+                                        value="Pescatarian, Severe Nut Allergy"></div>
+                                <div><label
+                                        class="text-[9px] font-bold uppercase tracking-widest text-white/40 mb-2 block">Primary
+                                        Residence</label><input type="text"
+                                        class="w-full bg-white/5 border-b border-white/10 py-3 italic text-sm focus:border-accentGold focus:outline-none"
+                                        value="Kensington, London SW7"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-12">
+                        <div>
+                            <h4
+                                class="text-[11px] font-bold uppercase tracking-widest text-[#B8964E] mb-6 border-b border-white/5 pb-4">
+                                Security Credentials</h4>
+                            <div class="space-y-6">
+                                <div class="p-6 border border-white/10 bg-white/5 flex items-center justify-between">
+                                    <h4 class="text-xs font-bold uppercase tracking-widest">BIOMETRIC ACTIVE</h4><span
+                                        class="w-2 h-2 rounded-full bg-green-500 shadow-pulse"></span>
+                                </div><button
+                                    class="w-full btn-secondary py-4 text-[10px] font-bold uppercase tracking-widest transition-all hover:border-red-400 hover:text-red-400">Rotate
+                                    Access Key</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- View 7: Node Map -->
+            <section id="view-map" class="view-section h-full">
+                <header class="mb-16">
+                    <h1 class="font-cormorant text-6xl font-bold text-white mb-2 leading-none">Global Concierge Map.
+                    </h1>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-accentGold font-outfit">Live node
+                        status across our primary hubs.</p>
+                </header>
+                <div
+                    class="w-full h-2/3 bg-white/5 border border-white/10 rounded-sm relative overflow-hidden flex items-center justify-center p-8 group">
+                    <div class="absolute inset-0 bg-[#070F1A] opacity-80 pointer-events-none"></div>
+                    <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-5xl">
+                        <div class="text-center p-8 border border-accentGold bg-accentGold/5 reveal">
+                            <h4 class="font-cormorant text-3xl font-bold text-white mb-2 tracking-widest">London</h4>
+                            <p class="text-[9px] uppercase font-bold tracking-widest text-accentGold animate-pulse">Node
+                                01 — ACTIVE</p>
+                        </div>
+                        <div class="text-center p-8 border border-white/10 bg-white/5 opacity-40 reveal"
+                            style="animation-delay: 0.1s">
+                            <h4 class="font-cormorant text-3xl font-bold text-white mb-2 tracking-widest">New York</h4>
+                            <p class="text-[9px] uppercase font-bold tracking-widest text-white/40">Node 02 — ACTIVE</p>
+                        </div>
+                        <div class="text-center p-8 border border-white/10 bg-white/5 opacity-40 reveal"
+                            style="animation-delay: 0.2s">
+                            <h4 class="font-cormorant text-3xl font-bold text-white mb-2 tracking-widest">Singapore</h4>
+                            <p class="text-[9px] uppercase font-bold tracking-widest text-white/40">Node 03 — ACTIVE</p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute inset-0 opacity-[0.03] select-none pointer-events-none flex items-center justify-center">
+                        <h1 class="text-[400px] font-bold uppercase transform -rotate-12 italic">GLOBAL LIAISON</h1>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        function syncDashboardThemeToggle() {
+            const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+
+            document.querySelectorAll('.sun-icon').forEach(icon => {
+                icon.style.display = theme === 'light' ? 'none' : 'block';
+            });
+
+            document.querySelectorAll('.moon-icon').forEach(icon => {
+                icon.style.display = theme === 'light' ? 'block' : 'none';
+            });
+
+            document.querySelectorAll('.theme-toggle-label').forEach(label => {
+                label.textContent = theme === 'light' ? 'Dark' : 'Light';
+            });
+        }
+
+        function toggleMobileMenu() {
+            const drawer = document.querySelector('.mobile-sidebar');
+            const scrim = document.querySelector('.mobile-sidebar-scrim');
+            const toggle = document.querySelector('.mobile-sidebar-toggle');
+            const isOpen = drawer.classList.toggle('open');
+            scrim.classList.toggle('open', isOpen);
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        function closeMobileMenu() {
+            const drawer = document.querySelector('.mobile-sidebar');
+            const scrim = document.querySelector('.mobile-sidebar-scrim');
+            const toggle = document.querySelector('.mobile-sidebar-toggle');
+            drawer.classList.remove('open');
+            scrim.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+
+        function switchView(viewId) {
+            // Update Navigation Triggers
+            document.querySelectorAll('.view-trigger').forEach(btn => {
+                btn.classList.remove('bg-accentGold', 'text-white', 'text-white/40');
+                if (btn.getAttribute('data-view') === viewId) {
+                    btn.classList.add('bg-accentGold', 'text-white');
+                } else {
+                    btn.classList.add('text-white/40');
+                }
+            });
+
+            // Update View Sections
+            document.querySelectorAll('.view-section').forEach(section => {
+                section.classList.remove('active');
+                if (section.id === 'view-' + viewId) {
+                    section.classList.add('active');
+                }
+            });
+
+            // Re-trigger scroll reveal for the new section
+            const newReveals = document.querySelectorAll('#view-' + viewId + ' .reveal');
+            newReveals.forEach(el => {
+                el.classList.remove('reveal');
+                void el.offsetWidth; // trigger reflow
+                el.classList.add('reveal');
+            });
+
+            if (window.innerWidth <= 1024) {
+                closeMobileMenu();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('theme')) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            syncDashboardThemeToggle();
+
+            document.querySelectorAll('.theme-toggle').forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    requestAnimationFrame(syncDashboardThemeToggle);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

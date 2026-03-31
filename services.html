@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Our Services — Attendant Corporate Concierge</title>
+    <meta name="description"
+        content="Explore Attendant's core services: Errand Express, Gift Curation, Appointment Architect, and more. Personalized enterprise concierge solutions.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D1B2A',
+                        secondary: '#F9F7F4',
+                        accentGold: '#B8964E',
+                        accentSlate: '#4A6FA5',
+                        darkBg: '#070F1A',
+                        darkSurface: '#0D1B2E',
+                        darkCard: '#102035',
+                        darkText: '#F0EDE8',
+                        darkMuted: '#94A3B8',
+                        darkBorder: '#1E3248',
+                    },
+                    fontFamily: {
+                        cormorant: ['Cormorant Garamond', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'sm': '0.125rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        [data-theme="dark"] .public-nav {
+            background-color: #070F1A;
+            border-bottom: 1px solid #1E3248;
+        }
+
+        .public-nav {
+            background-color: #F9F7F4;
+            border-bottom: 1px solid #E8E2D9;
+        }
+
+        [data-theme="dark"] .services-hero-copy .services-hero-title {
+            color: #F0EDE8;
+        }
+
+        [data-theme="dark"] .services-hero-copy .services-hero-description {
+            color: #94A3B8;
+        }
+
+        .services-hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(184, 150, 78, 0.18), transparent 32%),
+                linear-gradient(135deg, #f7f2ea 0%, #ffffff 45%, #eef3f8 100%);
+        }
+
+        [data-theme="dark"] .services-hero {
+            background:
+                radial-gradient(circle at top left, rgba(184, 150, 78, 0.16), transparent 32%),
+                linear-gradient(135deg, #07111c 0%, #0c1b2d 45%, #10243a 100%);
+        }
+
+        .services-hero::before,
+        .services-hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 9999px;
+            pointer-events: none;
+        }
+
+        .services-hero::before {
+            width: 22rem;
+            height: 22rem;
+            right: -7rem;
+            top: -6rem;
+            background: rgba(184, 150, 78, 0.12);
+            filter: blur(10px);
+            animation: conciergePulse 8s ease-in-out infinite;
+        }
+
+        .services-hero::after {
+            width: 14rem;
+            height: 14rem;
+            left: -4rem;
+            bottom: -4rem;
+            background: rgba(74, 111, 165, 0.14);
+            animation: conciergePulse 9s ease-in-out infinite reverse;
+        }
+
+        .services-orbit {
+            position: absolute;
+            inset: 8% 7% 10% 11%;
+            border: 1px solid rgba(184, 150, 78, 0.25);
+            border-radius: 2rem;
+            animation: conciergeOrbit 18s linear infinite;
+        }
+
+        [data-theme="dark"] .services-orbit {
+            border-color: rgba(184, 150, 78, 0.18);
+        }
+
+        .services-orbit::before,
+        .services-orbit::after {
+            content: "";
+            position: absolute;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #b8964e, #d9bc79);
+        }
+
+        .services-orbit::before {
+            width: 0.9rem;
+            height: 0.9rem;
+            top: -0.45rem;
+            left: 20%;
+        }
+
+        .services-orbit::after {
+            width: 0.65rem;
+            height: 0.65rem;
+            right: 14%;
+            bottom: -0.3rem;
+        }
+
+        .services-hero-frame {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .services-hero-image-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            box-shadow: 0 28px 60px rgba(13, 27, 42, 0.18);
+        }
+
+        .services-hero-image-wrap::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(13, 27, 42, 0.08), rgba(13, 27, 42, 0.48));
+        }
+
+        .services-hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 440px;
+            animation: conciergeZoom 14s ease-in-out infinite alternate;
+        }
+
+        .services-floating-card {
+            position: absolute;
+            backdrop-filter: blur(14px);
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(184, 150, 78, 0.18);
+            box-shadow: 0 20px 45px rgba(13, 27, 42, 0.14);
+            animation: conciergeFloat 5.5s ease-in-out infinite;
+        }
+
+        [data-theme="dark"] .services-floating-card {
+            background: rgba(7, 15, 26, 0.82);
+            border-color: rgba(184, 150, 78, 0.16);
+        }
+
+        .services-path-line {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-path-line::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -40%;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(184, 150, 78, 0.75), transparent);
+            animation: conciergeSweep 2.8s linear infinite;
+            animation-delay: var(--line-delay, 0s);
+        }
+
+        @keyframes conciergeFloat {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes conciergePulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.08);
+                opacity: 1;
+            }
+        }
+
+        @keyframes conciergeOrbit {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes conciergeSweep {
+            from {
+                left: -40%;
+            }
+
+            to {
+                left: 100%;
+            }
+        }
+
+        @keyframes conciergeZoom {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.08);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .services-hero-image {
+                min-height: 360px;
+            }
+
+            .services-hero-frame {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .services-floating-card {
+                position: static;
+                animation-duration: 4.8s;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-outfit antialiased transition-colors duration-300 pt-[72px]">
+    <header class="public-nav fixed top-0 left-0 right-0 z-[100] h-[72px] md:h-[72px] transition-all duration-300">
+        <nav class="container mx-auto px-4 h-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 border-2 border-accentGold rounded-sm flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300"><svg
+                        class="w-6 h-6 text-accentGold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                        </path>
+                    </svg></div>
+                <span
+                    class="font-cormorant text-2xl font-bold tracking-tight text-primary dark:text-darkText uppercase">Attendant</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+                <a href="index.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Home</a>
+                <a href="home-2.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Home 2</a>
+                <a href="about.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">About</a>
+                <a href="services.html"
+                    class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors border-b-2 border-accentGold text-accentGold">Services</a>
+                <a href="pricing.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Pricing</a>
+                <a href="blog.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Blog</a>
+                <a href="contact.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Contact</a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
+                <a href="login.html"
+                    class="text-sm font-semibold border-2 border-primary dark:border-darkText px-5 py-2 hover:bg-primary hover:text-white dark:hover:bg-darkText dark:hover:text-darkBg transition-all duration-300 rounded-sm">Sign
+                    In</a>
+                <a href="dashboard.html"
+                    class="text-sm font-semibold border-2 border-accentGold text-accentGold px-5 py-2 hover:bg-accentGold hover:text-white transition-all duration-300 rounded-sm">Dashboard</a>
+                <div class="flex items-center space-x-4 rtl:space-x-reverse ml-4 border-l dark:border-darkBorder pl-4 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4">
+                    <button class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors">
+                        <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
+                        <svg class="moon-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    </button>
+                    <button class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold">RTL</button>
+                </div>
+            </div>
+            <div class="lg:hidden flex items-center gap-4">
+                <button class="theme-toggle w-6 h-6 hover:text-accentGold transition-colors">
+                    <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
+                    <svg class="moon-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                </button>
+                <button class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold">RTL</button>
+                <button class="hamburger-btn w-10 h-10 flex items-center justify-center rounded-md" aria-label="Open navigation menu">
+                    <svg class="w-6 h-6" fill="none" stroke="var(--nav-icon-color)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SIDEBAR NAV (Same component across public pages) -->
+    <div class="sidebar-scrim"></div>
+    <aside class="sidebar-nav" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+        <div class="p-6 h-full flex flex-col">
+            <div class="flex items-center justify-between mb-8">
+                <a href="index.html"
+                    class="font-cormorant text-2xl font-bold text-primary dark:text-darkText uppercase">Attendant</a>
+                <button class="sidebar-close w-8 h-8"><svg class="w-6 h-6" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg></button>
+            </div>
+            <nav class="flex-grow">
+                <a href="index.html" class="block py-4 border-b border-accentGold/10">Home</a>
+                <a href="home-2.html" class="block py-4 border-b border-accentGold/10">Home 2</a>
+                <a href="about.html" class="block py-4 border-b border-accentGold/10">About</a>
+                <a href="services.html"
+                    class="block py-4 border-b border-accentGold/10 text-accentGold bg-accentGold/5 font-bold pl-4">Services</a>
+                <a href="pricing.html" class="block py-4 border-b border-accentGold/10">Pricing</a>
+                <a href="blog.html" class="block py-4 border-b border-accentGold/10">Blog</a>
+                <a href="contact.html" class="block py-4 border-b border-accentGold/10">Contact</a>
+                <a href="login.html" class="block py-4 border-b border-accentGold/10">Sign In</a>
+            </nav>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <section class="services-hero pt-14 pb-20 md:pt-20 md:pb-24">
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-14 items-center">
+                    <div class="max-w-2xl services-hero-copy">
+                        <span
+                            class="inline-flex items-center gap-3 text-[11px] md:text-xs font-semibold tracking-[0.35em] uppercase text-accentGold mb-6">
+                            Signature Service Design
+                            <span class="w-12 h-px bg-accentGold/60"></span>
+                        </span>
+                        <h1
+                            class="services-hero-title font-cormorant text-5xl md:text-7xl xl:text-[5.5rem] leading-[0.95] font-semibold tracking-tight text-primary dark:text-darkText">
+                            Concierge delivery built around executive momentum.
+                        </h1>
+                        <p class="services-hero-description mt-6 max-w-xl text-base md:text-lg leading-8 text-primary/70 dark:text-darkMuted">
+                            From urgent personal logistics to white-glove travel and event execution, each service lane
+                            is mapped to remove friction before it reaches your team.
+                        </p>
+                        <div class="mt-8 flex flex-wrap gap-4">
+                            <a href="contact.html"
+                                class="inline-flex items-center justify-center px-7 py-3 bg-primary text-white dark:bg-accentGold dark:text-darkBg rounded-sm font-semibold hover:bg-accentGold hover:text-white transition-all duration-300">Request
+                                a Concierge Plan</a>
+                            <a href="service-details.html"
+                                class="inline-flex items-center justify-center px-7 py-3 border border-accentGold text-accentGold rounded-sm font-semibold hover:bg-accentGold hover:text-white transition-all duration-300">See
+                                Delivery Standards</a>
+                        </div>
+                        <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="border border-accentGold/15 bg-white/70 dark:bg-darkCard/70 rounded-2xl px-5 py-5">
+                                <span class="text-accentGold text-xs uppercase tracking-[0.3em] font-semibold">01</span>
+                                <p class="mt-3 font-cormorant text-3xl font-semibold text-primary dark:text-darkText">
+                                    Intake</p>
+                                <p class="mt-2 text-sm leading-6 text-primary/65 dark:text-darkMuted">Requests are
+                                    prioritized by urgency, location, and service type.</p>
+                            </div>
+                            <div class="border border-accentGold/15 bg-white/70 dark:bg-darkCard/70 rounded-2xl px-5 py-5">
+                                <span class="text-accentGold text-xs uppercase tracking-[0.3em] font-semibold">02</span>
+                                <p class="mt-3 font-cormorant text-3xl font-semibold text-primary dark:text-darkText">
+                                    Match</p>
+                                <p class="mt-2 text-sm leading-6 text-primary/65 dark:text-darkMuted">A specialist
+                                    route is assigned with timing and quality checkpoints.</p>
+                            </div>
+                            <div class="border border-accentGold/15 bg-white/70 dark:bg-darkCard/70 rounded-2xl px-5 py-5">
+                                <span class="text-accentGold text-xs uppercase tracking-[0.3em] font-semibold">03</span>
+                                <p class="mt-3 font-cormorant text-3xl font-semibold text-primary dark:text-darkText">
+                                    Deliver</p>
+                                <p class="mt-2 text-sm leading-6 text-primary/65 dark:text-darkMuted">Progress stays
+                                    visible from dispatch through completion.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="services-hero-frame max-w-2xl xl:ml-auto w-full">
+                        <div class="services-orbit hidden md:block"></div>
+                        <div class="services-hero-image-wrap">
+                            <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
+                                alt="Corporate concierge specialist coordinating executive service requests"
+                                class="services-hero-image">
+                            <div class="absolute left-0 right-0 bottom-0 z-10 p-6 md:p-8">
+                                <div
+                                    class="max-w-md border border-white/20 bg-primary/60 rounded-2xl px-5 py-5 backdrop-blur-sm">
+                                    <p class="text-[11px] uppercase tracking-[0.3em] text-accentGold font-semibold">
+                                        Live Service Routing</p>
+                                    <div class="mt-4 space-y-3 text-sm text-white/85">
+                                        <div class="services-path-line h-7 rounded-full bg-white/10 px-4 flex items-center">
+                                            Executive airport transfer confirmed</div>
+                                        <div class="services-path-line h-7 rounded-full bg-white/10 px-4 flex items-center"
+                                            style="--line-delay: 0.4s;">Board meeting gifting dispatched</div>
+                                        <div class="services-path-line h-7 rounded-full bg-white/10 px-4 flex items-center"
+                                            style="--line-delay: 0.8s;">Private dining reservation finalized</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. SERVICE FILTER + CARDS -->
+        <section class="section-gap container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span
+                    class="text-xs font-outfit font-semibold tracking-[0.25em] uppercase text-accentGold mb-3 block">Full
+                    Spectrum Support</span>
+                <h2 class="font-cormorant text-5xl md:text-7xl font-semibold tracking-tight dark:text-darkText">Explore
+                    Our Capabilities</h2>
+                <div class="mt-10 flex flex-wrap justify-center gap-4 reveal">
+                    <button
+                        class="service-filter px-6 py-2 border border-accentGold text-accentGold rounded-sm font-bold text-sm bg-accentGold/5 hover:bg-accentGold hover:text-white transition-all">All</button>
+                    <button
+                        class="service-filter px-6 py-2 border border-accentGold/20 text-primary dark:bg-darkCard dark:border-darkBorder dark:text-darkText rounded-sm text-sm hover:border-accentGold transition-all">Errand</button>
+                    <button
+                        class="service-filter px-6 py-2 border border-accentGold/20 text-primary dark:bg-darkCard dark:border-darkBorder dark:text-darkText rounded-sm text-sm hover:border-accentGold transition-all">Gifts</button>
+                    <button
+                        class="service-filter px-6 py-2 border border-accentGold/20 text-primary dark:bg-darkCard dark:border-darkBorder dark:text-darkText rounded-sm text-sm hover:border-accentGold transition-all">Appointments</button>
+                    <button
+                        class="service-filter px-6 py-2 border border-accentGold/20 text-primary dark:bg-darkCard dark:border-darkBorder dark:text-darkText rounded-sm text-sm hover:border-accentGold transition-all">Travel</button>
+                    <button
+                        class="service-filter px-6 py-2 border border-accentGold/20 text-primary dark:bg-darkCard dark:border-darkBorder dark:text-darkText rounded-sm text-sm hover:border-accentGold transition-all">Wellness</button>
+                    <button
+                        class="service-filter px-6 py-2 border border-accentGold/20 text-primary dark:bg-darkCard dark:border-darkBorder dark:text-darkText rounded-sm text-sm hover:border-accentGold transition-all">Events</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div
+                    class="group bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-2xl border border-accentGold/10 transition-all animate-elevate">
+                    <div class="relative overflow-hidden h-64 mb-6 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?w=800&q=80"
+                            alt="Errand Express"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div
+                            class="absolute top-4 right-4 bg-accentGold text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-sm">
+                            Same-Day Available</div>
+                    </div>
+                    <h3 class="font-cormorant text-3xl font-bold mb-3 text-primary dark:text-darkText">Errand Express</h3>
+                    <p class="text-primary/60 dark:text-darkMuted text-sm mb-6 leading-relaxed">Dedicated logistics for
+                        dry cleaning, grocery management, and home service coordination.</p>
+                    <a href="service-details.html"
+                        class="text-accentGold font-bold text-sm border-b border-accentGold/20 pb-1 group-hover:border-accentGold transition-all">See
+                        Details →</a>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="group bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-2xl border border-accentGold/10 transition-all animate-elevate"
+                    style="animation-delay: 0.1s">
+                    <div class="relative overflow-hidden h-64 mb-6 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80"
+                            alt="Gift Curation"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div
+                            class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-sm">
+                            48h Curation</div>
+                    </div>
+                    <h3 class="font-cormorant text-3xl font-bold mb-3 text-primary dark:text-darkText">Gift Curation Studio</h3>
+                    <p class="text-primary/60 dark:text-darkMuted text-sm mb-6 leading-relaxed">Bespoke selection and
+                        delivery for enterprise clients, milestones, and personal celebrations.</p>
+                    <a href="service-details.html"
+                        class="text-accentGold font-bold text-sm border-b border-accentGold/20 pb-1 group-hover:border-accentGold transition-all">See
+                        Details →</a>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="group bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-2xl border border-accentGold/10 transition-all animate-elevate"
+                    style="animation-delay: 0.2s">
+                    <div class="relative overflow-hidden h-64 mb-6 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=800&q=80"
+                            alt="Appointment Architect"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div
+                            class="absolute top-4 right-4 bg-accentGold text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-sm">
+                            1h Processing</div>
+                    </div>
+                    <h3 class="font-cormorant text-3xl font-bold mb-3 text-primary dark:text-darkText">Appointment Architect</h3>
+                    <p class="text-primary/60 dark:text-darkMuted text-sm mb-6 leading-relaxed">Efficient scheduling for
+                        healthcare, specialty consultants, and critical home maintenance.</p>
+                    <a href="service-details.html"
+                        class="text-accentGold font-bold text-sm border-b border-accentGold/20 pb-1 group-hover:border-accentGold transition-all">See
+                        Details →</a>
+                </div>
+                <!-- Row 2 -->
+                <div
+                    class="group bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-2xl border border-accentGold/10 transition-all animate-elevate">
+                    <div class="relative overflow-hidden h-64 mb-6 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?w=800&q=80"
+                            alt="Travel & Logistics"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <h3 class="font-cormorant text-3xl font-bold mb-3 text-primary dark:text-darkText">Travel & Logistics</h3>
+                    <p class="text-primary/60 dark:text-darkMuted text-sm mb-6 leading-relaxed">End-to-end trip
+                        planning, from commercial flights to private charter and bespoke itineraries.</p>
+                    <a href="service-details.html"
+                        class="text-accentGold font-bold text-sm border-b border-accentGold/20 pb-1 group-hover:border-accentGold transition-all">See
+                        Details →</a>
+                </div>
+                <div class="group bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-2xl border border-accentGold/10 transition-all animate-elevate"
+                    style="animation-delay: 0.1s">
+                    <div class="relative overflow-hidden h-64 mb-6 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1544333346-633ac99d424b?w=800&q=80"
+                            alt="Wellness Support"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <h3 class="font-cormorant text-3xl font-bold mb-3 text-primary dark:text-darkText">Wellness Support</h3>
+                    <p class="text-primary/60 dark:text-darkMuted text-sm mb-6 leading-relaxed">Scheduling personal
+                        trainers, nutritionists, and spa services to maintain physical peak performance.</p>
+                    <a href="service-details.html"
+                        class="text-accentGold font-bold text-sm border-b border-accentGold/20 pb-1 group-hover:border-accentGold transition-all">See
+                        Details →</a>
+                </div>
+                <div class="group bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-2xl border border-accentGold/10 transition-all animate-elevate"
+                    style="animation-delay: 0.2s">
+                    <div class="relative overflow-hidden h-64 mb-6 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"
+                            alt="Event Handling"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <h3 class="font-cormorant text-3xl font-bold mb-3 text-primary dark:text-darkText">Event Handling</h3>
+                    <p class="text-primary/60 dark:text-darkMuted text-sm mb-6 leading-relaxed">Professional management
+                        of dinner parties, company offsites, and milestone events.</p>
+                    <a href="service-details.html"
+                        class="text-accentGold font-bold text-sm border-b border-accentGold/20 pb-1 group-hover:border-accentGold transition-all">See
+                        Details →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DELIVERY PROMISE STRIP -->
+        <section class="section-gap bg-[#0D1B2A] text-secondary">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center relative">
+                    <div class="group px-6 reveal">
+                        <span class="font-cormorant text-6xl font-bold text-accentGold mb-4 block">01</span>
+                        <h4 class="text-lg font-bold uppercase tracking-widest mb-4">Same-Day Delivery</h4>
+                        <p class="text-xs text-secondary/40 leading-relaxed">Errand requests submitted before 10 AM are
+                            guaranteed completion by end of day.</p>
+                        <div
+                            class="h-0.5 w-full bg-accentGold/20 mt-8 origin-left group-hover:bg-accentGold transition-all duration-700">
+                        </div>
+                    </div>
+                    <div class="group px-6 reveal" style="animation-delay: 0.1s">
+                        <span class="font-cormorant text-6xl font-bold text-accentGold mb-4 block">48h</span>
+                        <h4 class="text-lg font-bold uppercase tracking-widest mb-4">Gift Curation</h4>
+                        <p class="text-xs text-secondary/40 leading-relaxed">Tailored gift selections presented and
+                            ready for dispatch in under two business days.</p>
+                        <div
+                            class="h-0.5 w-full bg-accentGold/20 mt-8 origin-left group-hover:bg-accentGold transition-all duration-700">
+                        </div>
+                    </div>
+                    <div class="group px-6 reveal" style="animation-delay: 0.2s">
+                        <span class="font-cormorant text-6xl font-bold text-accentGold mb-4 block">01h</span>
+                        <h4 class="text-lg font-bold uppercase tracking-widest mb-4">Fast Booking</h4>
+                        <p class="text-xs text-secondary/40 leading-relaxed">Urgent appointment requests are processed
+                            and confirmed within sixty minutes.</p>
+                        <div
+                            class="h-0.5 w-full bg-accentGold/20 mt-8 origin-left group-hover:bg-accentGold transition-all duration-700">
+                        </div>
+                    </div>
+                    <div class="group px-6 reveal" style="animation-delay: 0.3s">
+                        <span class="font-cormorant text-6xl font-bold text-accentGold mb-4 block">24/7</span>
+                        <h4 class="text-lg font-bold uppercase tracking-widest mb-4">Real-Time Updates</h4>
+                        <p class="text-xs text-secondary/40 leading-relaxed">Access live status metrics and concierge
+                            communication at any moment.</p>
+                        <div
+                            class="h-0.5 w-full bg-accentGold/20 mt-8 origin-left group-hover:bg-accentGold transition-all duration-700">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. INDUSTRIES WE SERVE -->
+        <section class="section-gap container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-xs font-semibold tracking-[0.25em] uppercase text-accentGold mb-3 block">Vertical
+                    Expertise</span>
+                <h2 class="font-cormorant text-5xl font-semibold tracking-tight dark:text-darkText">Where Excellence
+                    Meets Industry</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Industry Tile -->
+                <div class="group relative h-80 overflow-hidden cursor-pointer animate-elevate">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
+                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute inset-0 bg-primary/60 group-hover:bg-primary/40 transition-all"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-8">
+                        <h4
+                            class="font-cormorant text-3xl text-white font-bold mb-4 translate-y-6 group-hover:translate-y-0 transition-transform">
+                            Finance</h4>
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity">
+                            <ul class="text-xs text-secondary/80 space-y-1 mb-4">
+                                <li>• High-discretion errands</li>
+                                <li>• Client gift management</li>
+                                <li>• Dinner booking at top tables</li>
+                            </ul>
+                            <span class="text-accentGold text-[10px] font-bold uppercase tracking-widest">Read Use Case
+                                →</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative h-80 overflow-hidden cursor-pointer animate-elevate"
+                    style="animation-delay: 0.1s">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80"
+                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute inset-0 bg-primary/60 group-hover:bg-primary/40 transition-all"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-8">
+                        <h4
+                            class="font-cormorant text-3xl text-white font-bold mb-4 translate-y-6 group-hover:translate-y-0 transition-transform">
+                            Legal</h4>
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity">
+                            <ul class="text-xs text-secondary/80 space-y-1 mb-4">
+                                <li>• Document logistics Support</li>
+                                <li>• Specialized home management</li>
+                                <li>• Partner event coordination</li>
+                            </ul>
+                            <span class="text-accentGold text-[10px] font-bold uppercase tracking-widest">Read Use Case
+                                →</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative h-80 overflow-hidden cursor-pointer animate-elevate"
+                    style="animation-delay: 0.2s">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80"
+                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute inset-0 bg-primary/60 group-hover:bg-primary/40 transition-all"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-8">
+                        <h4
+                            class="font-cormorant text-3xl text-white font-bold mb-4 translate-y-6 group-hover:translate-y-0 transition-transform">
+                            Tech</h4>
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity">
+                            <ul class="text-xs text-secondary/80 space-y-1 mb-4">
+                                <li>• Recruitment perk packages</li>
+                                <li>• Relocation assistance</li>
+                                <li>• Employee burnout reduction</li>
+                            </ul>
+                            <span class="text-accentGold text-[10px] font-bold uppercase tracking-widest">Read Use Case
+                                →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SERVICE CTA FORM -->
+        <section class="section-gap bg-[#0D1B2A] text-secondary">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="w-full lg:w-1/2">
+                        <h2 class="font-cormorant text-5xl md:text-6xl font-semibold mb-6">Tell Us What You Need.</h2>
+                        <p class="text-secondary/60 mb-8">Whether it's a pilot program for your leadership team or a
+                            global rollout, we are ready to build the solution.</p>
+                        <div
+                            class="flex items-center gap-4 text-accentGold border-l-2 border-accentGold pl-6 font-semibold">
+                            "Average response time: 4 minutes."
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 bg-white/5 p-8 border border-white/10">
+                        <form action="#" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <input type="text" placeholder="First Name"
+                                    class="w-full bg-white/5 border border-white/10 p-4 rounded-sm focus:border-accentGold focus:outline-none">
+                                <input type="text" placeholder="Company"
+                                    class="w-full bg-white/5 border border-white/10 p-4 rounded-sm focus:border-accentGold focus:outline-none">
+                            </div>
+                            <input type="email" placeholder="Work Email"
+                                class="w-full bg-white/5 border border-white/10 p-4 rounded-sm focus:border-accentGold focus:outline-none">
+                            <select
+                                class="w-full bg-white/5 border border-white/10 p-4 rounded-sm focus:border-accentGold focus:outline-none appearance-none">
+                                <option>Select Primary Interest</option>
+                                <option>Errand Express Pilot</option>
+                                <option>Gift Curation Studio</option>
+                                <option>Global Enterprise Plan</option>
+                            </select>
+                            <textarea placeholder="Tell us about your team size and objectives..." rows="4"
+                                class="w-full bg-white/5 border border-white/10 p-4 rounded-sm focus:border-accentGold focus:outline-none"></textarea>
+                            <button type="submit" class="btn-primary btn-gold-shimmer w-full py-4 text-lg">Send
+                                Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary text-secondary pt-24 pb-12 border-t border-accentGold/20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <!-- Col 1 -->
+                <div>
+                    <a href="index.html" class="brand-logo-link mb-6">
+                        <div class="brand-logo-mark">
+                            <svg class="brand-logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="brand-logo-text brand-logo-text-on-dark">Attendant</span>
+                    </a>
+                    <p class="text-secondary/60 text-sm leading-relaxed mb-8">Dedicated corporate concierge services for errands, gifts, appointments and more. Every detail, handled.</p>
+                    <div class="flex gap-4 opacity-50 transition-opacity hover:opacity-100">
+                        <a href="#" class="hover:text-accentGold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" class="hover:text-accentGold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    </div>
+                </div>
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-cormorant text-xl font-bold uppercase mb-6 text-white">Services</h4>
+                    <ul class="space-y-4 text-sm text-secondary/60">
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Errand Express</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Gift Curation</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Appointment Architect</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Travel & Logistics</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Wellness Support</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Event Handling</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-cormorant text-xl font-bold uppercase mb-6 text-white">Resources</h4>
+                    <ul class="space-y-4 text-sm text-secondary/60">
+                        <li><a href="blog.html" class="hover:text-accentGold transition-colors">Blog & Insights</a></li>
+                        <li><a href="pricing.html" class="hover:text-accentGold transition-colors">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-cormorant text-xl font-bold uppercase mb-6 text-white">Contact</h4>
+                    <ul class="space-y-4 text-sm text-secondary/60 mb-8">
+                        <li><span class="block text-accentGold mb-1">Email</span> concierge@attendant.com</li>
+                        <li><span class="block text-accentGold mb-1">Phone</span> +1 (888) 555-0123</li>
+                        <li><span class="block text-accentGold mb-1">Offices</span> London • NY • Singapore</li>
+                    </ul>
+                    <a href="contact.html" class="btn-primary btn-gold-shimmer w-full text-center">Request Demo</a>
+                </div>
+            </div>
+
+            <div class="h-px w-full bg-white/10 mb-8"></div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-secondary/40 gap-4">
+                <p>&copy; <span id="copyright-year"></span> Attendant Corporate Concierge. All Rights Reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Security Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
+

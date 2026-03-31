@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Plans & Pricing — Attendant Corporate Concierge</title>
+    <meta name="description"
+        content="Transparent pricing for elite corporate concierge support. From individual leadership tiers to global enterprise coverage.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#0D1B2A', secondary: '#F9F7F4', accentGold: '#B8964E', darkBg: '#070F1A', darkSurface: '#0D1B2E', darkCard: '#102035', darkText: '#F0EDE8', },
+                    fontFamily: { cormorant: ['Cormorant Garamond', 'serif'], outfit: ['Outfit', 'sans-serif'], },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        [data-theme="dark"] .public-nav {
+            background-color: #070F1A;
+            border-bottom: 1px solid #1E3248;
+        }
+
+        .public-nav {
+            background-color: #F9F7F4;
+            border-bottom: 1px solid #E8E2D9;
+        }
+
+        [data-theme="dark"] .pricing-tier-card {
+            background-color: #102035;
+            border-color: rgba(184, 150, 78, 0.22);
+        }
+
+        [data-theme="dark"] .pricing-tier-title,
+        [data-theme="dark"] .pricing-tier-price,
+        [data-theme="dark"] .pricing-tier-list {
+            color: #F0EDE8;
+        }
+
+        [data-theme="dark"] .pricing-tier-muted {
+            color: rgba(240, 237, 232, 0.68);
+        }
+
+        [data-theme="dark"] .pricing-faq-title,
+        [data-theme="dark"] .pricing-faq-question {
+            color: #F0EDE8;
+        }
+
+        [data-theme="dark"] .pricing-faq-answer {
+            color: rgba(240, 237, 232, 0.68);
+        }
+
+        @media (max-width: 767px) {
+            .pricing-comparison-table {
+                min-width: 620px;
+            }
+
+            .pricing-comparison-table thead th,
+            .pricing-comparison-table tbody td {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            .pricing-comparison-table thead th:not(:first-child),
+            .pricing-comparison-table tbody td:not(:first-child) {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                text-align: center;
+            }
+
+            .pricing-comparison-table thead th:first-child,
+            .pricing-comparison-table tbody td:first-child {
+                width: 40%;
+                padding-right: 1rem;
+            }
+
+            .pricing-comparison-table thead th {
+                font-size: 10px;
+                line-height: 1.2;
+            }
+
+            .pricing-comparison-table thead th:first-child {
+                font-size: 1.125rem;
+            }
+
+            .pricing-comparison-table tbody {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-outfit antialiased transition-colors duration-300 pt-[72px]">
+    <header class="public-nav fixed top-0 left-0 right-0 z-[100] h-[72px] md:h-[72px] transition-all duration-300">
+        <nav class="container mx-auto px-4 h-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 border-2 border-accentGold rounded-sm flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+                    <svg class="w-6 h-6 text-accentGold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <span class="font-cormorant text-2xl font-bold tracking-tight text-primary dark:text-darkText uppercase">Attendant</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+                <a href="index.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Home</a>
+                <a href="home-2.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Home 2</a>
+                <a href="about.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">About</a>
+                <a href="services.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Services</a>
+                <a href="pricing.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors border-b-2 border-accentGold text-accentGold">Pricing</a>
+                <a href="blog.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Blog</a>
+                <a href="contact.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Contact</a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
+                <a href="login.html" class="text-sm font-semibold border-2 border-primary dark:border-darkText px-5 py-2 hover:bg-primary hover:text-white dark:hover:bg-darkText dark:hover:text-darkBg transition-all duration-300 rounded-sm">Sign In</a>
+                <a href="dashboard.html" class="text-sm font-semibold border-2 border-accentGold text-accentGold px-5 py-2 hover:bg-accentGold hover:text-white transition-all duration-300 rounded-sm">Dashboard</a>
+                <div class="flex items-center space-x-4 rtl:space-x-reverse ml-4 border-l dark:border-darkBorder pl-4 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4">
+                    <button class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors">
+                        <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
+                        <svg class="moon-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    </button>
+                    <button class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold">RTL</button>
+                </div>
+            </div>
+            <div class="lg:hidden flex items-center gap-4">
+                <button class="theme-toggle w-6 h-6 hover:text-accentGold transition-colors">
+                    <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
+                    <svg class="moon-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                </button>
+                <button class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold">RTL</button>
+                <button class="hamburger-btn w-10 h-10 flex items-center justify-center rounded-md" aria-label="Open navigation menu">
+                    <svg class="w-6 h-6" fill="none" stroke="var(--nav-icon-color)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <div class="sidebar-scrim"></div>
+    <aside class="sidebar-nav" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+        <div class="p-6 h-full flex flex-col">
+            <div class="flex items-center justify-between mb-8">
+                <a href="index.html" class="font-cormorant text-2xl font-bold tracking-tight text-primary dark:text-darkText uppercase">Attendant</a>
+                <button class="sidebar-close w-8 h-8 flex items-center justify-center p-0" aria-label="Close navigation menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <nav class="flex-grow flex flex-col">
+                <a href="index.html" class="py-4 border-b border-accentGold/10 text-lg font-medium hover:text-accentGold transition-colors">Home</a>
+                <a href="home-2.html" class="py-4 border-b border-accentGold/10 text-lg font-medium hover:text-accentGold transition-colors">Home 2</a>
+                <a href="about.html" class="py-4 border-b border-accentGold/10 text-lg font-medium hover:text-accentGold transition-colors">About</a>
+                <a href="services.html" class="py-4 border-b border-accentGold/10 text-lg font-medium hover:text-accentGold transition-colors">Services</a>
+                <a href="pricing.html" class="py-4 border-b border-accentGold/10 text-lg font-medium hover:text-accentGold transition-colors border-l-[3px] border-accentGold pl-4 bg-accentGold/5">Pricing</a>
+                <a href="blog.html" class="py-4 border-b border-accentGold/10 text-lg font-medium hover:text-accentGold transition-colors">Blog</a>
+                <a href="contact.html" class="py-4 border-b border-accentGold/10 text-lg font-medium hover:text-accentGold transition-colors">Contact</a>
+                <a href="login.html" class="py-4 border-b border-accentGold/10 text-lg font-medium hover:text-accentGold transition-colors">Sign In</a>
+                <a href="dashboard.html" class="py-4 border-b border-accentGold/10 text-lg font-medium hover:text-accentGold transition-colors">Dashboard</a>
+            </nav>
+        </div>
+    </aside>
+
+    <main id="main-content">
+        <!-- 1. PRICING TOGGLE + 3 TIERS -->
+        <section class="section-gap container mx-auto px-4 text-center">
+            <div class="mb-16">
+                <span class="text-xs font-semibold tracking-[0.25em] uppercase text-accentGold mb-4 block">Scalable
+                    Excellence</span>
+                <h1 class="font-cormorant text-6xl md:text-8xl font-semibold mb-12 dark:text-darkText tracking-tight">
+                    Investment in Focus.</h1>
+                <div class="flex items-center justify-center gap-6 mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest opacity-40">Monthly</span>
+                    <button
+                        class="w-16 h-8 bg-primary dark:bg-accentGold rounded-full p-1 flex items-center transition-all px-1">
+                        <div class="w-6 h-6 bg-white rounded-full translate-x-0 transition-transform"></div>
+                    </button>
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#B8964E]">Annual</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Essentials Tier -->
+                <div
+                    class="pricing-tier-card group bg-secondary dark:bg-darkCard p-12 border border-accentGold/10 rounded-sm shadow-sm hover:shadow-2xl transition-all reveal">
+                    <h3 class="pricing-tier-title font-cormorant text-3xl font-bold mb-4 text-primary dark:text-darkText">Essentials</h3>
+                    <p class="pricing-tier-muted text-xs text-primary/40 dark:text-darkMuted uppercase tracking-widest mb-8">FOR BOUTIQUE
+                        TEAMS (25-50 EMP)</p>
+                    <div class="mb-12"><span class="pricing-tier-price text-5xl font-bold text-primary dark:text-darkText">$12</span><span
+                            class="pricing-tier-muted text-xs text-primary/40 dark:text-darkMuted font-bold uppercase tracking-widest">/
+                            Employee / Month</span></div>
+                    <ul class="pricing-tier-list text-left space-y-6 text-sm mb-12 opacity-80 text-primary dark:text-darkMuted leading-relaxed">
+                        <li class="flex gap-4"><span>✓</span> Core Errand Express Services</li>
+                        <li class="flex gap-4"><span>✓</span> Gift Curation (up to 10/mo)</li>
+                        <li class="flex gap-4"><span>✓</span> Standard Dashboard Access</li>
+                        <li class="flex gap-4"><span>✓</span> Business Hours Support</li>
+                    </ul>
+                    <a href="signup.html" class="btn-secondary w-full border-primary/20 hover:border-accentGold">Choose
+                        Essentials</a>
+                </div>
+                <!-- Professional Tier (Most Popular) -->
+                <div class="group bg-primary text-secondary p-12 border-2 border-accentGold rounded-sm shadow-2xl relative reveal scale-105 animate-elevate"
+                    style="animation-delay: 0.1s">
+                    <div
+                        class="absolute -top-4 inset-x-0 mx-auto w-fit bg-accentGold text-white text-[10px] font-bold px-6 py-2 uppercase tracking-widest">
+                        Most Popular</div>
+                    <h3 class="font-cormorant text-3xl font-bold mb-4 text-white">Professional</h3>
+                    <p class="text-xs text-secondary/40 uppercase tracking-widest mb-8">FOR GROWTH TEAMS (100-500 EMP)
+                    </p>
+                    <div class="mb-12"><span class="text-5xl font-bold text-white">$24</span><span
+                            class="text-xs text-secondary/40 font-bold uppercase tracking-widest">/ Employee /
+                            Month</span></div>
+                    <ul class="text-left space-y-6 text-sm mb-12 leading-relaxed">
+                        <li class="flex gap-4"><span class="text-accentGold">✓</span> Unlimited Errand & Logistics</li>
+                        <li class="flex gap-4"><span class="text-accentGold">✓</span> Premium Curation Studio (unlim.)
+                        </li>
+                        <li class="flex gap-4"><span class="text-accentGold">✓</span> Appointment Architect Support</li>
+                        <li class="flex gap-4"><span class="text-accentGold">✓</span> 24/7 Global Priority Support</li>
+                        <li class="flex gap-4"><span class="text-accentGold">✓</span> HR & Wellbeing Analytics</li>
+                    </ul>
+                    <a href="signup.html" class="btn-primary btn-gold-shimmer w-full border-none py-5">Upgrade to
+                        Pro</a>
+                </div>
+                <!-- Enterprise Tier -->
+                <div class="pricing-tier-card group bg-secondary dark:bg-darkCard p-12 border border-accentGold/10 rounded-sm shadow-sm hover:shadow-2xl transition-all reveal"
+                    style="animation-delay: 0.2s">
+                    <h3 class="pricing-tier-title font-cormorant text-3xl font-bold mb-4 text-primary dark:text-darkText">Enterprise</h3>
+                    <p class="pricing-tier-muted text-xs text-primary/40 dark:text-darkMuted uppercase tracking-widest mb-8">GLOBAL
+                        ORGANIZATIONS (500+ EMP)</p>
+                    <div class="pricing-tier-price mb-12 font-cormorant text-2xl font-bold text-primary dark:text-darkText italic">Bespoke Quotation
+                    </div>
+                    <ul class="pricing-tier-list text-left space-y-6 text-sm mb-12 opacity-80 text-primary dark:text-darkMuted leading-relaxed">
+                        <li class="flex gap-4"><span>✓</span> Global Deployment Across All Geos</li>
+                        <li class="flex gap-4"><span>✓</span> Dedicated Concierge Node & Liaison</li>
+                        <li class="flex gap-4"><span>✓</span> API Integration for ERP & HR Plat.</li>
+                        <li class="flex gap-4"><span>✓</span> Custom SLA & Security Framework</li>
+                        <li class="flex gap-4"><span>✓</span> Private Event Management Node</li>
+                    </ul>
+                    <a href="contact.html" class="btn-secondary w-full border-primary/20 hover:border-accentGold">Speak
+                        with Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. FEATURE COMPARISON TABLE -->
+        <section class="section-gap container mx-auto px-4 overflow-x-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-cormorant text-5xl font-semibold dark:text-darkText tracking-tight">Tier Comparison</h2>
+            </div>
+            <table class="pricing-comparison-table w-full max-w-6xl mx-auto text-left border-collapse">
+                <thead>
+                    <tr class="border-b border-accentGold/10">
+                        <th class="py-6 font-cormorant text-xl dark:text-darkText">Core Capability</th>
+                        <th class="py-6 text-center text-xs uppercase tracking-widest dark:text-darkText opacity-40">
+                            Essentials</th>
+                        <th class="py-6 text-center text-xs uppercase tracking-widest dark:text-darkText opacity-40">
+                            Professional</th>
+                        <th
+                            class="py-6 text-center text-xs uppercase tracking-widest accent-gold text-accentGold bg-accentGold/5">
+                            Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm">
+                    <tr class="border-b border-accentGold/5">
+                        <td class="py-6 dark:text-darkMuted">Unlimited Errand Handling</td>
+                        <td class="text-center text-primary/20 dark:text-darkMuted/20">×</td>
+                        <td class="text-center text-accentGold font-bold">✓</td>
+                        <td class="text-center text-accentGold font-bold bg-accentGold/5">✓</td>
+                    </tr>
+                    <tr class="border-b border-accentGold/5">
+                        <td class="py-6 dark:text-darkMuted">Bespoke Curation Studio</td>
+                        <td class="text-center text-accentGold font-bold">10/mo</td>
+                        <td class="text-center text-accentGold font-bold">✓</td>
+                        <td class="text-center text-accentGold font-bold bg-accentGold/5">✓</td>
+                    </tr>
+                    <tr class="border-b border-accentGold/5">
+                        <td class="py-6 dark:text-darkMuted">Appointment Management</td>
+                        <td class="text-center text-primary/20 dark:text-darkMuted/20">×</td>
+                        <td class="text-center text-accentGold font-bold">✓</td>
+                        <td class="text-center text-accentGold font-bold bg-accentGold/5">✓</td>
+                    </tr>
+                    <tr class="border-b border-accentGold/5">
+                        <td class="py-6 dark:text-darkMuted">API Integrations</td>
+                        <td class="text-center text-primary/20 dark:text-darkMuted/20">×</td>
+                        <td class="text-center text-primary/20 dark:text-darkMuted/20">×</td>
+                        <td class="text-center text-accentGold font-bold bg-accentGold/5">✓</td>
+                    </tr>
+                    <tr class="border-b border-accentGold/10">
+                        <td class="py-6 dark:text-darkMuted">24/7 Global Liaison</td>
+                        <td class="text-center text-primary/20 dark:text-darkMuted/20">×</td>
+                        <td class="text-center text-accentGold font-bold">✓</td>
+                        <td class="text-center text-accentGold font-bold bg-accentGold/5">✓</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 3. PRICING FAQ (Accordion) -->
+        <section class="section-gap bg-secondary dark:bg-darkSurface transition-colors">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 class="pricing-faq-title font-cormorant text-5xl font-semibold text-primary dark:text-darkText tracking-tight">Common Inquiries
+                    </h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-white dark:bg-darkCard p-8 border border-accentGold/10 group cursor-pointer reveal">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="pricing-faq-question font-cormorant text-2xl font-bold text-primary dark:text-darkText">What is the minimum
+                                employee requirement?</h4>
+                            <span
+                                class="text-accentGold font-bold text-2xl group-hover:rotate-45 transition-transform">+</span>
+                        </div>
+                        <p
+                            class="pricing-faq-answer text-sm text-primary/60 dark:text-darkMuted max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500">
+                            Our Essentials tier begins at a minimum of 25 employees. for smaller leadership teams,
+                            please contact our bespoke team for concierge auditing.</p>
+                    </div>
+                    <div class="bg-white dark:bg-darkCard p-8 border border-accentGold/10 group cursor-pointer reveal"
+                        style="animation-delay: 0.1s">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="pricing-faq-question font-cormorant text-2xl font-bold text-primary dark:text-darkText">Is employee data shared
+                                with the company?</h4>
+                            <span
+                                class="text-accentGold font-bold text-2xl group-hover:rotate-45 transition-transform">+</span>
+                        </div>
+                        <p
+                            class="pricing-faq-answer text-sm text-primary/60 dark:text-darkMuted max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500">
+                            Never. All personal concierge requests are handled with absolute confidentiality and are
+                            never shared back to HR or organizational leadership.</p>
+                    </div>
+                    <div class="bg-white dark:bg-darkCard p-8 border border-accentGold/10 group cursor-pointer reveal"
+                        style="animation-delay: 0.2s">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="pricing-faq-question font-cormorant text-2xl font-bold text-primary dark:text-darkText">How does billing work for
+                                global teams?</h4>
+                            <span
+                                class="text-accentGold font-bold text-2xl group-hover:rotate-45 transition-transform">+</span>
+                        </div>
+                        <p
+                            class="pricing-faq-answer text-sm text-primary/60 dark:text-darkMuted max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500">
+                            We offer consolidated global billing for Enterprise partners with localized seat adjustment
+                            options depending on geographic deployment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ENTERPRISE CTA -->
+        <section class="section-gap bg-primary text-secondary overflow-hidden text-center reveal">
+            <div class="absolute inset-0 opacity-10 blur-3xl pointer-events-none transform -translate-y-1/2 rotate-12">
+                <div class="w-full h-full bg-accentGold"></div>
+            </div>
+            <div class="relative z-10 container mx-auto px-4 max-w-4xl">
+                <h2
+                    class="font-cormorant text-5xl md:text-7xl font-semibold mb-8 border-b border-accentGold/20 pb-4 inline-block tracking-tight">
+                    Managing 500+ employees?</h2>
+                <p class="text-lg text-secondary/60 mb-12 max-w-lg mx-auto leading-relaxed">Let's build a custom plan
+                    that integrates seamlessly with your existing global HR infrastructure.</p>
+                <a href="contact.html"
+                    class="btn-primary btn-gold-shimmer inline-flex w-full sm:w-auto justify-center px-6 sm:px-12 py-4 sm:py-5 text-base sm:text-xl tracking-[0.12em] sm:tracking-widest font-bold">Schedule an
+                    Enterprise Call</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary text-secondary pt-24 pb-12 border-t border-accentGold/20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <!-- Col 1 -->
+                <div>
+                    <a href="index.html" class="brand-logo-link mb-6">
+                        <div class="brand-logo-mark">
+                            <svg class="brand-logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="brand-logo-text brand-logo-text-on-dark">Attendant</span>
+                    </a>
+                    <p class="text-secondary/60 text-sm leading-relaxed mb-8">Dedicated corporate concierge services for errands, gifts, appointments and more. Every detail, handled.</p>
+                    <div class="flex gap-4 opacity-50 transition-opacity hover:opacity-100">
+                        <a href="#" class="hover:text-accentGold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" class="hover:text-accentGold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    </div>
+                </div>
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-cormorant text-xl font-bold uppercase mb-6 text-white">Services</h4>
+                    <ul class="space-y-4 text-sm text-secondary/60">
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Errand Express</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Gift Curation</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Appointment Architect</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Travel & Logistics</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Wellness Support</a></li>
+                        <li><a href="service-details.html" class="hover:text-accentGold transition-colors">Event Handling</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-cormorant text-xl font-bold uppercase mb-6 text-white">Resources</h4>
+                    <ul class="space-y-4 text-sm text-secondary/60">
+                        <li><a href="blog.html" class="hover:text-accentGold transition-colors">Blog & Insights</a></li>
+                        <li><a href="pricing.html" class="hover:text-accentGold transition-colors">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-cormorant text-xl font-bold uppercase mb-6 text-white">Contact</h4>
+                    <ul class="space-y-4 text-sm text-secondary/60 mb-8">
+                        <li><span class="block text-accentGold mb-1">Email</span> concierge@attendant.com</li>
+                        <li><span class="block text-accentGold mb-1">Phone</span> +1 (888) 555-0123</li>
+                        <li><span class="block text-accentGold mb-1">Offices</span> London • NY • Singapore</li>
+                    </ul>
+                    <a href="contact.html" class="btn-primary btn-gold-shimmer w-full text-center">Request Demo</a>
+                </div>
+            </div>
+
+            <div class="h-px w-full bg-white/10 mb-8"></div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-secondary/40 gap-4">
+                <p>&copy; <span id="copyright-year"></span> Attendant Corporate Concierge. All Rights Reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Security Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
+
