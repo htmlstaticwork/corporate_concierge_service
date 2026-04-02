@@ -1,0 +1,6 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="100" fill="#0F2130"/>
+  <circle cx="100" cy="76" r="34" fill="#D1A64A"/>
+  <path d="M44 164C50.2 128 71.8 110 100 110C128.2 110 149.8 128 156 164" fill="#D1A64A"/>
+  <text x="100" y="184" text-anchor="middle" fill="#F7F3EC" font-family="Georgia, serif" font-size="28" font-weight="600" letter-spacing="4">CW</text>
+</svg>

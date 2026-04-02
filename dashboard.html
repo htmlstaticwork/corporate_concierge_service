@@ -421,21 +421,20 @@
                     </button>
                 </nav>
 
-                <button type="button"
-                    class="dashboard-theme-toggle theme-toggle lg:hidden mt-8 flex w-full items-center justify-between rounded-sm px-4 py-4 text-[10px] font-bold uppercase tracking-widest transition-colors">
-                    <span class="flex items-center gap-3">
-                        <svg class="sun-icon h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="mt-8 hidden items-center space-x-4 border-l border-white/10 pl-4 rtl:space-x-reverse rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4 lg:hidden">
+                    <button type="button" class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors">
+                        <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
                         </svg>
-                        <svg class="moon-icon hidden h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="moon-icon hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                         </svg>
-                        <span>Theme</span>
-                    </span>
-                    <span class="theme-toggle-label">Light</span>
-                </button>
+                    </button>
+                    <button type="button" aria-label="Toggle RTL layout"
+                        class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold">RTL</button>
+                </div>
             </div>
 
             <div class="mt-12 border-t border-white/5 pt-12 text-left">
@@ -516,21 +515,20 @@
                     </button>
                 </nav>
 
-                <button type="button"
-                    class="dashboard-theme-toggle theme-toggle mt-8 flex w-full items-center justify-between rounded-sm px-4 py-4 text-[10px] font-bold uppercase tracking-widest transition-colors">
-                    <span class="flex items-center gap-3">
-                        <svg class="sun-icon h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="mt-8 flex items-center space-x-4 border-l border-white/10 pl-4 rtl:space-x-reverse rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4">
+                    <button type="button" class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors">
+                        <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
                         </svg>
-                        <svg class="moon-icon hidden h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="moon-icon hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                         </svg>
-                        <span>Theme</span>
-                    </span>
-                    <span class="theme-toggle-label">Light</span>
-                </button>
+                    </button>
+                    <button type="button" aria-label="Toggle RTL layout"
+                        class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold">RTL</button>
+                </div>
             </div>
 
             <div class="mt-12 border-t border-white/5 pt-8 text-left">
@@ -566,16 +564,18 @@
                 </button>
 
                 <!-- Header Theme Toggle -->
-                <button type="button" 
-                    class="dashboard-theme-toggle theme-toggle flex items-center gap-3 rounded-sm px-3 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors">
-                    <svg class="sun-icon h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
-                    </svg>
-                    <svg class="moon-icon hidden h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                    <span class="theme-toggle-label">Light</span>
-                </button>
+                <div class="flex items-center space-x-4 border-l border-white/10 pl-4 rtl:space-x-reverse rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4">
+                    <button type="button" class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors">
+                        <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+                        </svg>
+                        <svg class="moon-icon hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+                    <button type="button" aria-label="Toggle RTL layout"
+                        class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold">RTL</button>
+                </div>
 
                 <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-accentGold/60">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> HUB LONDON SECURE</div>
