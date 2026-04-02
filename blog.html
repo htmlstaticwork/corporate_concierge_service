@@ -7,6 +7,7 @@
     <title>The Attendant Editorial — Corporate Concierge Insights</title>
     <meta name="description"
         content="Insights into organizational culure, human-centric productivity, and the future of work-life balance.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -56,7 +57,7 @@
                 </div>
                 <span class="font-cormorant text-2xl font-bold tracking-tight text-primary dark:text-darkText uppercase">Attendant</span>
             </a>
-            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+            <div class="hidden xl:flex items-center space-x-8 rtl:space-x-reverse">
                 <a href="index.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Home</a>
                 <a href="home-2.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Home 2</a>
                 <a href="about.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">About</a>
@@ -65,7 +66,7 @@
                 <a href="blog.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors border-b-2 border-accentGold text-accentGold">Blog</a>
                 <a href="contact.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Contact</a>
             </div>
-            <div class="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
+            <div class="hidden xl:flex items-center space-x-6 rtl:space-x-reverse">
                 <a href="login.html" class="text-sm font-semibold border-2 border-primary dark:border-darkText px-5 py-2 hover:bg-primary hover:text-white dark:hover:bg-darkText dark:hover:text-darkBg transition-all duration-300 rounded-sm">Sign In</a>
                 <a href="dashboard.html" class="text-sm font-semibold border-2 border-accentGold text-accentGold px-5 py-2 hover:bg-accentGold hover:text-white transition-all duration-300 rounded-sm">Dashboard</a>
                 <div class="flex items-center space-x-4 rtl:space-x-reverse ml-4 border-l dark:border-darkBorder pl-4 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4">
@@ -76,7 +77,7 @@
                     <button class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold">RTL</button>
                 </div>
             </div>
-            <div class="lg:hidden flex items-center gap-4">
+            <div class="xl:hidden flex items-center gap-4">
                 <button class="theme-toggle w-6 h-6 hover:text-accentGold transition-colors">
                     <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
                     <svg class="moon-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
@@ -112,6 +113,15 @@
     </aside>
 
     <main id="main-content">
+        <section class="bg-secondary dark:bg-darkBg pt-24 pb-20 border-b border-accentGold/10 transition-colors">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-3xl mx-auto">
+                    <span class="text-[11px] md:text-xs font-semibold tracking-[0.4em] uppercase text-accentGold mb-6 block reveal">Insights & Perspectives</span>
+                    <h1 class="font-cormorant text-5xl md:text-7xl font-semibold text-primary dark:text-darkText mb-6 reveal" style="animation-delay: 0.1s">The Attendant Editorial</h1>
+                    <p class="text-lg text-primary/60 dark:text-darkText/70 leading-relaxed reveal" style="animation-delay: 0.2s">Thought leadership on organizational culture, human-centric productivity, and the future of work-life balance.</p>
+                </div>
+            </div>
+        </section>
         <!-- 1. FEATURED ARTICLE -->
         <section class="min-h-[70vh] flex flex-col lg:flex-row bg-[#0D1B2A] text-secondary overflow-hidden group">
             <div class="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center reveal">
@@ -181,7 +191,7 @@
                 </article>
                 <!-- Article 2 -->
                 <article class="group reveal animate-elevate" style="animation-delay: 0.1s">
-                    <div class="relative h-[320px] overflow-hidden rounded-sm mb-8">
+                    <div class="relative h-64 overflow-hidden rounded-sm mb-8">
                         <img src="https://media.istockphoto.com/id/1987101391/photo/team-of-happy-entrepreneurs-talking-on-a-meeting-in-the-office.jpg?s=612x612&w=0&k=20&c=4EvDnzPmKA8dKsSqSCOPR0B2DCbH8oRtO0S3MqGDTp4="
                             class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
                         <div

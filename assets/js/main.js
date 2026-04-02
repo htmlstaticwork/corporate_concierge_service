@@ -1,19 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- THEME MANAGEMENT ---
     const themeToggle = document.querySelectorAll('.theme-toggle');
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcons(savedTheme);
-
-    themeToggle.forEach(toggle => {
-        toggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcons(newTheme);
-        });
-    });
+    
+    const applyTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        localStorage.setItem('theme', theme);
+        updateThemeIcons(theme);
+    };
 
     function updateThemeIcons(theme) {
         document.querySelectorAll('.sun-icon').forEach(icon => {
@@ -23,6 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.style.display = theme === 'light' ? 'block' : 'none';
         });
     }
+
+    applyTheme(localStorage.getItem('theme') || 'light');
+
+    themeToggle.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+        });
+    });
 
     // --- RTL MANAGEMENT ---
     const rtlToggle = document.querySelectorAll('.rtl-toggle');
@@ -130,6 +137,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.stat-card').forEach(card => {
         statsObserver.observe(card);
+    });
+
+    // --- BACK TO TOP BUTTON ---
+    const backToTopButton = document.createElement('button');
+    backToTopButton.type = 'button';
+    backToTopButton.className = 'back-to-top';
+    backToTopButton.setAttribute('aria-label', 'Back to top');
+    backToTopButton.innerHTML = `
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    `;
+    document.body.appendChild(backToTopButton);
+
+    const toggleBackToTopButton = () => {
+        backToTopButton.classList.toggle('is-visible', window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', toggleBackToTopButton, { passive: true });
+    toggleBackToTopButton();
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 
     // --- COPYRIGHT YEAR ---

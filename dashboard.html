@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Employee Dashboard — Attendant Corporate Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -99,6 +100,16 @@
             box-shadow: -24px 0 60px rgba(13, 27, 42, 0.12);
         }
 
+        [data-theme="light"] .dashboard-main h4,
+        [data-theme="light"] .dashboard-main .theme-toggle-label {
+            color: #0D1B2A !important;
+        }
+
+        [data-theme="light"] .dashboard-theme-toggle {
+            border-color: rgba(13, 27, 42, 0.1) !important;
+            background: rgba(13, 27, 42, 0.02) !important;
+        }
+
         [data-theme="light"] .mobile-sidebar-toggle {
             background: rgba(255, 255, 255, 0.96);
             color: #0D1B2A;
@@ -155,7 +166,7 @@
             background-color: rgba(13, 27, 42, 0.08) !important;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1200px) {
             .dashboard-container {
                 grid-template-columns: 1fr;
                 height: auto;
@@ -177,7 +188,7 @@
                 right: 0;
                 height: 5.25rem;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
                 padding: 0 5.5rem 0 1rem;
                 background: rgba(13, 27, 46, 0.96);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -411,7 +422,7 @@
                 </nav>
 
                 <button type="button"
-                    class="dashboard-theme-toggle theme-toggle mt-8 flex w-full items-center justify-between rounded-sm px-4 py-4 text-[10px] font-bold uppercase tracking-widest transition-colors">
+                    class="dashboard-theme-toggle theme-toggle lg:hidden mt-8 flex w-full items-center justify-between rounded-sm px-4 py-4 text-[10px] font-bold uppercase tracking-widest transition-colors">
                     <span class="flex items-center gap-3">
                         <svg class="sun-icon h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -434,9 +445,9 @@
                     <span>&rarr;</span>
                 </a>
                 <button onclick="switchView('profile')" data-view="profile"
-                    class="view-trigger flex items-center gap-4 group">
-                    <img src="https://images.unsplash.com/photo-1573496359142-f22b93d89a3a?w=100&q=80"
-                        class="w-10 h-10 rounded-full grayscale hover:grayscale-0 transition-all border border-accentGold/40">
+                    class="view-trigger lg:hidden flex items-center gap-4 group w-full text-left">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80"
+                        class="w-10 h-10 rounded-full transition-all border border-accentGold/40">
                     <div class="text-left">
                         <h4 class="text-xs font-bold text-white group-hover:text-accentGold transition-colors">Elena
                             Petrova</h4>
@@ -530,8 +541,8 @@
                 </a>
                 <button onclick="switchView('profile')" data-view="profile"
                     class="view-trigger flex items-center gap-4 group w-full text-left">
-                    <img src="https://images.unsplash.com/photo-1573496359142-f22b93d89a3a?w=100&q=80"
-                        class="w-10 h-10 rounded-full grayscale hover:grayscale-0 transition-all border border-accentGold/40">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80"
+                        class="w-10 h-10 rounded-full transition-all border border-accentGold/40">
                     <div class="text-left">
                         <h4 class="text-xs font-bold text-white group-hover:text-accentGold transition-colors">Elena
                             Petrova</h4>
@@ -543,9 +554,31 @@
 
         <!-- Dashboard Content Container (Toggled) -->
         <main class="dashboard-main flex-grow bg-darkBg p-12 lg:p-16 relative">
-            <div class="absolute top-0 right-0 p-8 hidden lg:flex items-center gap-6 z-[100]">
-                <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-accentGold">
-                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> HUB LONDON SECURE</div>
+            <div class="absolute top-0 right-0 p-8 hidden lg:flex items-center gap-10 z-[100]">
+                <!-- Header Profile -->
+                <button onclick="switchView('profile')" data-view="profile"
+                    class="view-trigger flex items-center gap-3 group">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80"
+                        class="w-8 h-8 rounded-full transition-all border border-accentGold/40 group-hover:border-accentGold">
+                    <div class="text-left">
+                        <h4 class="text-[11px] font-bold text-white group-hover:text-accentGold transition-colors uppercase tracking-widest">Elena Petrova</h4>
+                    </div>
+                </button>
+
+                <!-- Header Theme Toggle -->
+                <button type="button" 
+                    class="dashboard-theme-toggle theme-toggle flex items-center gap-3 rounded-sm px-3 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors">
+                    <svg class="sun-icon h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+                    </svg>
+                    <svg class="moon-icon hidden h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    <span class="theme-toggle-label">Light</span>
+                </button>
+
+                <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-accentGold/60">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> HUB LONDON SECURE</div>
             </div>
 
             <!-- View 1: Overview -->
@@ -569,7 +602,7 @@
                         <h4 class="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-6">Primary Concierge
                         </h4>
                         <div class="flex items-center gap-6"><img
-                                src="https://images.unsplash.com/photo-1544333346-633ac99d424b?w=100&q=80"
+                                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80"
                                 class="w-16 h-16 rounded-full border border-accentGold/40">
                             <div>
                                 <h4 class="font-cormorant text-3xl font-bold">Nadia</h4>
@@ -678,7 +711,7 @@
             <section id="view-chat" class="view-section h-full flex flex-col">
                 <header class="flex items-center justify-between mb-16 border-b border-white/5 pb-8 relative">
                     <div class="flex items-center gap-6"><img
-                            src="https://images.unsplash.com/photo-1544333346-633ac99d424b?w=100&q=80"
+                            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80"
                             class="w-12 h-12 rounded-full border border-accentGold animate-pulse">
                         <div>
                             <h4 class="font-cormorant text-3xl font-bold text-white">Nadia Osei</h4>
@@ -809,7 +842,7 @@
                 </header>
                 <div
                     class="w-full h-2/3 bg-white/5 border border-white/10 rounded-sm relative overflow-hidden flex items-center justify-center p-8 group">
-                    <div class="absolute inset-0 bg-[#070F1A] opacity-80 pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-darkBg opacity-80 pointer-events-none"></div>
                     <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-5xl">
                         <div class="text-center p-8 border border-accentGold bg-accentGold/5 reveal">
                             <h4 class="font-cormorant text-3xl font-bold text-white mb-2 tracking-widest">London</h4>
@@ -899,7 +932,7 @@
                 el.classList.add('reveal');
             });
 
-            if (window.innerWidth <= 1024) {
+            if (window.innerWidth <= 1200) {
                 closeMobileMenu();
             }
         }

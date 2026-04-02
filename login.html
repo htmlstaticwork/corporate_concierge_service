@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Secure Access — Attendant Corporate Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,9 +28,17 @@
     </style>
 </head>
 
-<body class="font-outfit antialiased bg-darkBg text-darkText min-h-screen flex items-center justify-center p-4 auth-bg">
+<body class="font-outfit antialiased bg-darkBg text-darkText min-h-screen flex items-center justify-center p-4 auth-bg transition-colors duration-300">
     <div
         class="w-full max-w-md bg-darkSurface/80 p-12 border border-accentGold/20 backdrop-blur-xl reveal rounded-sm shadow-2xl relative">
+        <!-- Theme & RTL Toggles -->
+        <div class="absolute top-6 right-6 flex items-center space-x-4 z-20">
+            <button class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors text-white/50" aria-label="Toggle Theme">
+                <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
+                <svg class="moon-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            </button>
+            <button class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold text-white/50" aria-label="Toggle RTL">RTL</button>
+        </div>
         <div
             class="absolute top-0 right-0 w-32 h-32 bg-accentGold/5 -translate-y-16 translate-x-16 rotate-45 pointer-events-none">
         </div>

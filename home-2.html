@@ -7,6 +7,7 @@
     <title>Attendant — The Editorial Concierge Experience</title>
     <meta name="description"
         content="The invisible hand behind every great company. Attendant provides premium corporate concierge services with editorial precision.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -97,6 +98,133 @@
 
         [data-theme="dark"] .home2-hero-secondary {
             border-color: rgba(240, 237, 232, 0.16);
+        }
+
+        [data-theme="dark"] .home2-chip-section {
+            background-color: #0D1B2E;
+        }
+
+        [data-theme="dark"] .home2-chip-pill {
+            background-color: #102035;
+            border-color: rgba(240, 237, 232, 0.08);
+        }
+
+        [data-theme="dark"] .home2-chip-pill span {
+            color: #F0EDE8 !important;
+        }
+
+        [data-theme="dark"] .home2-split-section {
+            background-color: #070F1A;
+        }
+
+        [data-theme="dark"] .home2-split-copy h3 {
+            color: #F0EDE8 !important;
+        }
+
+        [data-theme="dark"] .home2-split-copy p {
+            color: #94A3B8 !important;
+        }
+
+        [data-theme="dark"] .home2-trust-card {
+            background-color: #102035;
+            border-color: rgba(240, 237, 232, 0.08);
+        }
+
+        [data-theme="dark"] .home2-trust-section h2,
+        [data-theme="dark"] .home2-trust-section h3 {
+            color: #F0EDE8 !important;
+        }
+
+        [data-theme="dark"] .home2-trust-section p {
+            color: #94A3B8 !important;
+        }
+
+        [data-theme="dark"] .home2-qualification-section {
+            background-color: #0D1B2E;
+        }
+
+        [data-theme="dark"] .home2-qualification-shell {
+            background-color: #102035;
+            border-color: rgba(240, 237, 232, 0.08);
+        }
+
+        [data-theme="dark"] .home2-qualification-body .home2-qualification-panel {
+            background-color: #0D1B2E;
+            border-color: rgba(240, 237, 232, 0.08);
+        }
+
+        [data-theme="dark"] .home2-qualification-body h3,
+        [data-theme="dark"] .home2-qualification-body .home2-qualification-summary {
+            color: #F0EDE8 !important;
+        }
+
+        [data-theme="dark"] .home2-qualification-body p {
+            color: #94A3B8 !important;
+        }
+
+        .home2-qualification-heading {
+            text-align: center;
+        }
+
+        .home2-qualification-intro {
+            text-align: center;
+        }
+
+        .home2-qualification-label {
+            text-align: center;
+        }
+
+        .home2-qualification-actions {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home2-qualification-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 17rem;
+            min-height: 4rem;
+            text-align: center;
+        }
+
+        [data-theme="dark"] .home2-team-section h2,
+        [data-theme="dark"] .home2-team-section h4 {
+            color: #F0EDE8 !important;
+        }
+
+        [data-theme="dark"] .home2-team-section p {
+            color: #94A3B8 !important;
+        }
+
+        [data-theme="dark"] .home2-hero-metric-card {
+            background: rgba(16, 32, 53, 0.78);
+            border-color: rgba(240, 237, 232, 0.1);
+        }
+
+        .home2-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 3.75rem;
+            padding: 1rem 1.5rem;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .home2-hero-cta {
+                min-width: 17.5rem;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .home2-hero-cta-group {
+                flex-direction: column;
+            }
+
+            .home2-hero-cta {
+                width: 100%;
+            }
         }
 
         .home2-hero-orbit {
@@ -209,16 +337,16 @@
                 <span
                     class="font-cormorant text-2xl font-bold tracking-tight text-primary dark:text-darkText uppercase">Attendant</span>
             </a>
-            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+            <div class="hidden xl:flex items-center space-x-8 rtl:space-x-reverse">
                 <a href="index.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Home</a>
-                <a href="home-2.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300 text-accentGold">Home 2</a>
+                <a href="home-2.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors border-b-2 border-accentGold text-accentGold">Home 2</a>
                 <a href="about.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">About</a>
                 <a href="services.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Services</a>
                 <a href="pricing.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Pricing</a>
                 <a href="blog.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Blog</a>
                 <a href="contact.html" class="nav-link-grow text-sm font-medium hover:text-accentGold transition-colors duration-300">Contact</a>
             </div>
-            <div class="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
+            <div class="hidden xl:flex items-center space-x-6 rtl:space-x-reverse">
                 <a href="login.html"
                     class="text-sm font-semibold border-2 border-primary dark:border-darkText px-5 py-2 hover:bg-primary hover:text-white dark:hover:bg-darkText dark:hover:text-darkBg transition-all duration-300 rounded-sm">Sign
                     In</a>
@@ -232,7 +360,7 @@
                     <button class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold">RTL</button>
                 </div>
             </div>
-            <div class="lg:hidden flex items-center gap-4">
+            <div class="xl:hidden flex items-center gap-4">
                 <button class="theme-toggle w-6 h-6 hover:text-accentGold transition-colors">
                     <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
                     <svg class="moon-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
@@ -277,10 +405,10 @@
 
     <main id="main-content">
         <!-- HERO SECTION: SIGNAL ROOM -->
-        <section class="home2-hero min-h-[calc(100vh-72px)]">
+        <section class="home2-hero min-h-[calc(100vh-72px)] lg:h-[calc(100vh-72px)] flex items-start lg:items-center overflow-hidden">
             <div class="home2-hero-orbit orbit-a"></div>
             <div class="home2-hero-orbit orbit-b"></div>
-            <div class="home2-hero-shell container mx-auto px-4 py-10 md:py-14 lg:py-20">
+            <div class="home2-hero-shell container mx-auto px-4 py-12 md:py-16 lg:py-10">
                 <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
                     <div class="max-w-2xl">
                         <span
@@ -300,30 +428,14 @@
                             Home 2 now opens inside a live command-room concept: concierge intelligence, task routing,
                             and white-glove follow-through presented as a premium operational layer for modern teams.
                         </p>
-                        <div class="reveal mt-10 flex flex-wrap gap-4" style="animation-delay: 0.5s">
-                            <a href="contact.html" class="btn-primary btn-gold-shimmer">Schedule Strategy Call</a>
+                        <div class="home2-hero-cta-group reveal mt-10 flex flex-wrap gap-4" style="animation-delay: 0.5s">
+                            <a href="contact.html" class="home2-hero-cta btn-primary btn-gold-shimmer">Schedule Strategy Call</a>
                             <a href="services.html"
-                                class="home2-hero-secondary inline-flex items-center border border-primary/15 px-6 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary transition-all hover:border-accentGold hover:text-accentGold">
+                                class="home2-hero-cta home2-hero-secondary inline-flex items-center border border-primary/15 text-sm font-semibold uppercase tracking-[0.2em] text-primary transition-all hover:border-accentGold hover:text-accentGold">
                                 Explore Service Pods
                             </a>
                         </div>
-                        <div class="reveal mt-12 grid gap-4 sm:grid-cols-3" style="animation-delay: 0.65s">
-                            <div class="border border-primary/10 bg-white/60 px-5 py-5 shadow-sm dark:border-white/10 dark:bg-white/5">
-                                <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-accentGold">Response</p>
-                                <p class="home2-hero-metric-value mt-3 font-cormorant text-4xl text-primary">12m</p>
-                                <p class="home2-hero-metric-copy mt-2 text-sm text-primary/60">Average concierge routing window</p>
-                            </div>
-                            <div class="border border-primary/10 bg-white/60 px-5 py-5 shadow-sm dark:border-white/10 dark:bg-white/5">
-                                <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-accentGold">Coverage</p>
-                                <p class="home2-hero-metric-value mt-3 font-cormorant text-4xl text-primary">24/7</p>
-                                <p class="home2-hero-metric-copy mt-2 text-sm text-primary/60">Cross-region support rhythm</p>
-                            </div>
-                            <div class="border border-primary/10 bg-white/60 px-5 py-5 shadow-sm dark:border-white/10 dark:bg-white/5">
-                                <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-accentGold">Precision</p>
-                                <p class="home2-hero-metric-value mt-3 font-cormorant text-4xl text-primary">98%</p>
-                                <p class="home2-hero-metric-copy mt-2 text-sm text-primary/60">Task completion satisfaction</p>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="relative min-h-[34rem]">
                         <div class="home2-hero-image absolute inset-x-0 bottom-0 top-10 reveal bg-primary dark:bg-darkCard"
@@ -345,48 +457,48 @@
         </section>
 
         <!-- SECTION 1: SERVICE CHIPS CAROUSEL -->
-        <section class="py-12 bg-white dark:bg-darkSurface transition-colors overflow-hidden">
+        <section class="home2-chip-section py-12 bg-white dark:bg-darkSurface transition-colors overflow-hidden">
             <div class="flex items-center space-x-6 overflow-x-auto px-8 pb-4 no-scrollbar cursor-grab active:cursor-grabbing"
                 id="service-chips-row">
                 <div
-                    class="flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/20 hover:border-accentGold transition-all group cursor-pointer active shadow-sm">
+                    class="home2-chip-pill flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/20 hover:border-accentGold transition-all group cursor-pointer active shadow-sm">
                     <img src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?w=80&q=80"
                         class="w-8 h-8 rounded-full object-cover">
                     <span class="text-sm font-semibold text-primary dark:text-darkText">Errand Express</span>
                 </div>
                 <div
-                    class="flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
+                    class="home2-chip-pill flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
                     <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=80&q=80"
                         class="w-8 h-8 rounded-full object-cover">
                     <span class="text-sm font-semibold text-primary dark:text-darkText">Gift Curation</span>
                 </div>
                 <div
-                    class="flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
+                    class="home2-chip-pill flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
                     <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=80&q=80"
                         class="w-8 h-8 rounded-full object-cover">
                     <span class="text-sm font-semibold text-primary dark:text-darkText">Appointments</span>
                 </div>
                 <div
-                    class="flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?w=80&q=80"
+                    class="home2-chip-pill flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=80&q=80"
                         class="w-8 h-8 rounded-full object-cover">
                     <span class="text-sm font-semibold text-primary dark:text-darkText">Travel & Logistics</span>
                 </div>
                 <div
-                    class="flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1579822366905-5192136e0fc2?w=80&q=80"
+                    class="home2-chip-pill flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=80&q=80"
                         class="w-8 h-8 rounded-full object-cover">
                     <span class="text-sm font-semibold text-primary dark:text-darkText">Childcare</span>
                 </div>
                 <div
-                    class="flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
+                    class="home2-chip-pill flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
                     <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=80&q=80"
                         class="w-8 h-8 rounded-full object-cover">
                     <span class="text-sm font-semibold text-primary dark:text-darkText">Events</span>
                 </div>
                 <div
-                    class="flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1544333346-633ac99d424b?w=80&q=80"
+                    class="home2-chip-pill flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/0 hover:border-accentGold transition-all group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=80&q=80"
                         class="w-8 h-8 rounded-full object-cover">
                     <span class="text-sm font-semibold text-primary dark:text-darkText">Wellness</span>
                 </div>
@@ -394,17 +506,17 @@
         </section>
 
         <!-- SECTION 2: SPLIT VALUE PROPOSITION -->
-        <section class="bg-secondary dark:bg-darkBg transition-colors">
+        <section class="home2-split-section bg-secondary dark:bg-darkBg transition-colors">
             <!-- Row 1 -->
             <div class="flex flex-col md:flex-row min-h-[500px] fade-slide-up">
                 <div class="w-full md:w-1/2">
                     <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1000&q=80"
                         class="w-full h-full object-cover" loading="lazy">
                 </div>
-                <div class="w-full md:w-1/2 flex items-center p-12 lg:p-24">
+                <div class="home2-split-copy w-full md:w-1/2 flex items-center p-12 lg:p-24">
                     <div class="max-w-lg">
                         <span
-                            class="text-accentGold font-bold text-5xl md:text-7xl font-cormorant mb-4 block">Productivity</span>
+                            class="text-accentGold font-bold text-5xl md:text-6xl lg:text-7xl font-cormorant mb-4 block">Productivity</span>
                         <h3
                             class="font-cormorant text-3xl font-semibold text-primary dark:text-darkText mb-6 tracking-tight">
                             4.2 hours returned per employee per week.</h3>
@@ -421,7 +533,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8V-3BWen8LY9vrZqeCAS_59ky1DU-fz55YA&s"
                         class="w-full h-full object-cover" loading="lazy">
                 </div>
-                <div class="w-full md:w-1/2 flex items-center p-12 lg:p-24">
+                <div class="home2-split-copy w-full md:w-1/2 flex items-center p-12 lg:p-24">
                     <div class="max-w-lg">
                         <span
                             class="text-accentGold font-bold text-5xl md:text-7xl font-cormorant mb-4 block">Loyalty</span>
@@ -441,7 +553,7 @@
                     <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1000&q=80"
                         class="w-full h-full object-cover" loading="lazy">
                 </div>
-                <div class="w-full md:w-1/2 flex items-center p-12 lg:p-24">
+                <div class="home2-split-copy w-full md:w-1/2 flex items-center p-12 lg:p-24">
                     <div class="max-w-lg">
                         <span
                             class="text-accentGold font-bold text-5xl md:text-7xl font-cormorant mb-4 block">Wellbeing</span>
@@ -458,7 +570,7 @@
         </section>
 
         <!-- SECTION 3: TRUST & CERTIFICATIONS GRID -->
-        <section class="section-gap container mx-auto px-4">
+        <section class="home2-trust-section section-gap container mx-auto px-4">
             <div class="text-center mb-16">
                 <span
                     class="text-xs font-outfit font-semibold tracking-[0.25em] uppercase text-accentGold mb-3 block">Infinite
@@ -467,16 +579,16 @@
                     class="font-cormorant text-5xl md:text-6xl font-semibold tracking-tight text-primary dark:text-darkText">
                     Enterprise Ready</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8">
                 <div
-                    class="bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-xl transition-shadow border border-accentGold/10 scale-in">
+                    class="home2-trust-card bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-xl transition-shadow border border-accentGold/10 scale-in">
                     <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80"
                         class="w-full h-40 object-cover mb-6 rounded-sm">
                     <h3 class="font-cormorant text-2xl font-bold mb-3 dark:text-darkText">ISO 27001 Certified</h3>
                     <p class="text-sm text-primary/60 dark:text-darkMuted">Global standards for information security
                         management systems.</p>
                 </div>
-                <div class="bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-xl transition-shadow border border-accentGold/10 scale-in"
+                <div class="home2-trust-card bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-xl transition-shadow border border-accentGold/10 scale-in"
                     style="animation-delay: 0.1s">
                     <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=80"
                         class="w-full h-40 object-cover mb-6 rounded-sm">
@@ -484,7 +596,7 @@
                     <p class="text-sm text-primary/60 dark:text-darkMuted">Strict adherence to data privacy regulations
                         across all jurisdictions.</p>
                 </div>
-                <div class="bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-xl transition-shadow border border-accentGold/10 scale-in"
+                <div class="home2-trust-card bg-white dark:bg-darkCard p-8 rounded-sm shadow-sm hover:shadow-xl transition-shadow border border-accentGold/10 scale-in"
                     style="animation-delay: 0.2s">
                     <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&q=80"
                         class="w-full h-40 object-cover mb-6 rounded-sm">
@@ -496,15 +608,15 @@
         </section>
 
         <!-- SECTION 4: INLINE PRE-QUALIFICATION FORM -->
-        <section class="section-gap bg-secondary dark:bg-darkSurface transition-colors">
+        <section class="home2-qualification-section section-gap bg-secondary dark:bg-darkSurface transition-colors">
             <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_1.4fr] border border-accentGold/15 bg-white dark:bg-darkCard shadow-2xl overflow-hidden">
+                <div class="home2-qualification-shell grid grid-cols-1 lg:grid-cols-[1.1fr_1.4fr] border border-accentGold/15 bg-white dark:bg-darkCard shadow-2xl overflow-hidden">
                     <div class="p-10 lg:p-14 bg-[#0D1B2A] text-secondary flex flex-col justify-between">
                         <div>
                             <span
-                                class="text-[11px] font-outfit font-semibold tracking-[0.3em] uppercase text-accentGold mb-6 block">Readiness
+                                class="home2-qualification-intro text-[11px] font-outfit font-semibold tracking-[0.3em] uppercase text-accentGold mb-6 block">Readiness
                                 Snapshot</span>
-                            <h2 class="font-cormorant text-5xl md:text-6xl font-semibold leading-[0.92] mb-8">See If
+                            <h2 class="home2-qualification-intro font-cormorant text-5xl md:text-6xl font-semibold leading-[0.92] mb-8">See If
                                 Attendant Is Right for Your Organization</h2>
                             <p class="text-secondary/70 text-lg leading-relaxed max-w-md">A strong fit usually appears
                                 when high-performing teams are losing time to personal logistics, fragmented support,
@@ -532,39 +644,39 @@
                         </div>
                     </div>
 
-                    <div class="p-10 lg:p-14">
+                    <div class="home2-qualification-body p-10 lg:p-14">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
-                            <div class="border border-accentGold/15 bg-secondary/60 dark:bg-darkSurface p-6">
-                                <div class="text-[10px] font-bold tracking-[0.28em] uppercase text-accentGold mb-4">
+                            <div class="home2-qualification-panel border border-accentGold/15 bg-secondary/60 dark:bg-darkSurface p-6">
+                                <div class="home2-qualification-label text-[10px] font-bold tracking-[0.28em] uppercase text-accentGold mb-4">
                                     Company Scale</div>
-                                <h3 class="font-cormorant text-2xl font-semibold text-primary dark:text-darkText mb-3">
+                                <h3 class="home2-qualification-heading font-cormorant text-2xl font-semibold text-primary dark:text-darkText mb-3">
                                     200 to 5,000 employees</h3>
                                 <p class="text-sm leading-relaxed text-primary/60 dark:text-darkMuted">The model works
                                     best when internal teams are large enough to feel operational drag from daily life
                                     admin.</p>
                             </div>
-                            <div class="border border-accentGold/15 bg-secondary/60 dark:bg-darkSurface p-6">
-                                <div class="text-[10px] font-bold tracking-[0.28em] uppercase text-accentGold mb-4">
+                            <div class="home2-qualification-panel border border-accentGold/15 bg-secondary/60 dark:bg-darkSurface p-6">
+                                <div class="home2-qualification-label text-[10px] font-bold tracking-[0.28em] uppercase text-accentGold mb-4">
                                     Team Pressure</div>
-                                <h3 class="font-cormorant text-2xl font-semibold text-primary dark:text-darkText mb-3">
+                                <h3 class="home2-qualification-heading font-cormorant text-2xl font-semibold text-primary dark:text-darkText mb-3">
                                     High-output roles under constant load</h3>
                                 <p class="text-sm leading-relaxed text-primary/60 dark:text-darkMuted">If your people
                                     are balancing performance demands with personal coordination, concierge support has
                                     immediate value.</p>
                             </div>
-                            <div class="border border-accentGold/15 bg-secondary/60 dark:bg-darkSurface p-6">
-                                <div class="text-[10px] font-bold tracking-[0.28em] uppercase text-accentGold mb-4">
+                            <div class="home2-qualification-panel border border-accentGold/15 bg-secondary/60 dark:bg-darkSurface p-6">
+                                <div class="home2-qualification-label text-[10px] font-bold tracking-[0.28em] uppercase text-accentGold mb-4">
                                     Leadership Goal</div>
-                                <h3 class="font-cormorant text-2xl font-semibold text-primary dark:text-darkText mb-3">
+                                <h3 class="home2-qualification-heading font-cormorant text-2xl font-semibold text-primary dark:text-darkText mb-3">
                                     Retention, focus, and wellbeing</h3>
                                 <p class="text-sm leading-relaxed text-primary/60 dark:text-darkMuted">Attendant is
                                     strongest when leadership wants measurable time recovery and a more human employee
                                     experience.</p>
                             </div>
-                            <div class="border border-accentGold/15 bg-secondary/60 dark:bg-darkSurface p-6">
-                                <div class="text-[10px] font-bold tracking-[0.28em] uppercase text-accentGold mb-4">
+                            <div class="home2-qualification-panel border border-accentGold/15 bg-secondary/60 dark:bg-darkSurface p-6">
+                                <div class="home2-qualification-label text-[10px] font-bold tracking-[0.28em] uppercase text-accentGold mb-4">
                                     Operational Style</div>
-                                <h3 class="font-cormorant text-2xl font-semibold text-primary dark:text-darkText mb-3">
+                                <h3 class="home2-qualification-heading font-cormorant text-2xl font-semibold text-primary dark:text-darkText mb-3">
                                     White-glove, not one-size-fits-all</h3>
                                 <p class="text-sm leading-relaxed text-primary/60 dark:text-darkMuted">Organizations
                                     looking for premium, discreet support tend to see the strongest cultural lift.</p>
@@ -575,12 +687,12 @@
                             <div>
                                 <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-accentGold mb-2">Quick
                                     Conclusion</p>
-                                <p class="text-lg text-primary dark:text-darkText font-medium">If these signals match
+                                <p class="home2-qualification-summary text-lg text-primary dark:text-darkText font-medium">If these signals match
                                     your organization, Attendant is likely a strong fit.</p>
                             </div>
-                            <div class="flex flex-wrap gap-4">
-                                <a href="contact.html" class="btn-primary btn-gold-shimmer">Book a Fit Review</a>
-                                <a href="services.html" class="btn-secondary">Explore Service Model</a>
+                            <div class="home2-qualification-actions flex flex-wrap gap-4">
+                                <a href="contact.html" class="home2-qualification-cta btn-primary btn-gold-shimmer">Book a Fit Review</a>
+                                <a href="services.html" class="home2-qualification-cta btn-secondary">Explore Service Model</a>
                             </div>
                         </div>
                     </div>
@@ -589,7 +701,7 @@
         </section>
 
         <!-- SECTION 5: TEAM SPOTLIGHT -->
-        <section class="section-gap container mx-auto px-4">
+        <section class="home2-team-section section-gap container mx-auto px-4">
             <div class="text-center mb-16">
                 <span
                     class="text-xs font-outfit font-semibold tracking-[0.25em] uppercase text-accentGold mb-3 block">Expert
