@@ -173,7 +173,7 @@
             }
 
             .sidebar-ui {
-                display: none;
+                display: none !important;
             }
 
             .dashboard-main {
@@ -181,7 +181,7 @@
             }
 
             .mobile-dashboard-header {
-                display: flex;
+                display: flex !important;
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -210,7 +210,7 @@
             }
 
             .mobile-sidebar-toggle {
-                display: inline-flex;
+                display: inline-flex !important;
                 position: fixed;
                 top: 1rem;
                 right: 1rem;
@@ -226,7 +226,7 @@
             }
 
             .mobile-sidebar-scrim {
-                display: none;
+                display: none !important;
                 position: fixed;
                 inset: 0;
                 background: rgba(7, 15, 26, 0.72);
@@ -237,7 +237,7 @@
             }
 
             .mobile-sidebar {
-                display: none;
+                display: none !important;
                 position: fixed;
                 top: 0;
                 right: 0;
@@ -256,14 +256,26 @@
                 overflow-y: auto;
             }
 
+            .mobile-sidebar .brand-logo-link {
+                display: none;
+            }
+
+            .dashboard-header-toggles {
+                display: none !important;
+            }
+
+            .dashboard-topbar-controls {
+                display: none !important;
+            }
+
             .mobile-sidebar.open {
-                display: flex;
+                display: flex !important;
                 opacity: 1;
                 pointer-events: auto;
             }
 
             .mobile-sidebar-scrim.open {
-                display: block;
+                display: block !important;
                 opacity: 1;
                 pointer-events: auto;
             }
@@ -552,7 +564,7 @@
 
         <!-- Dashboard Content Container (Toggled) -->
         <main class="dashboard-main flex-grow bg-darkBg p-12 lg:p-16 relative">
-            <div class="absolute top-0 right-0 p-8 hidden lg:flex items-center gap-10 z-[100]">
+            <div class="dashboard-topbar-controls absolute top-0 right-0 p-8 hidden lg:flex items-center gap-10 z-[100]">
                 <!-- Header Profile -->
                 <button onclick="switchView('profile')" data-view="profile"
                     class="view-trigger flex items-center gap-3 group">
@@ -564,7 +576,7 @@
                 </button>
 
                 <!-- Header Theme Toggle -->
-                <div class="flex items-center space-x-4 border-l border-white/10 pl-4 rtl:space-x-reverse rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4">
+                <div class="dashboard-header-toggles flex items-center space-x-4 border-l border-white/10 pl-4 rtl:space-x-reverse rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4">
                     <button type="button" class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors">
                         <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
