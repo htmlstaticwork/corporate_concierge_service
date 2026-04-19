@@ -33,6 +33,20 @@
             overflow-y: auto;
         }
 
+        @media (min-width: 1201px) {
+            .dashboard-main,
+            .sidebar-ui {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .dashboard-main::-webkit-scrollbar,
+            .sidebar-ui::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+        }
+
         .view-section {
             min-width: 0;
         }
@@ -384,6 +398,30 @@
                 padding: 1rem;
             }
 
+            #view-studio .group .absolute.inset-x-0.bottom-0 {
+                padding: 1rem;
+            }
+
+            #view-studio .group h4 {
+                font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+                line-height: 1.08;
+                white-space: normal;
+                overflow-wrap: anywhere;
+                transform: none !important;
+            }
+
+        }
+
+        @media (min-width: 768px) and (max-width: 1200px) {
+            #view-studio > header {
+                align-items: flex-start;
+                text-align: left;
+                gap: 1.5rem;
+            }
+
+            #view-studio > header > div:last-child {
+                align-self: flex-start;
+            }
         }
 
         #view-chat header > div:first-child {
@@ -396,39 +434,39 @@
     <div class="dashboard-container">
         <!-- Dashboard Sidebar -->
         <aside
-            class="sidebar-ui hidden bg-darkSurface border-r border-white/5 p-8 justify-between relative shadow-2xl z-50 overflow-y-auto lg:flex lg:flex-col">
+            class="sidebar-ui hidden bg-darkSurface border-r border-white/5 p-6 justify-between relative shadow-2xl z-50 overflow-y-auto lg:flex lg:flex-col">
             <div>
-                <a href="index.html" class="brand-logo-link mb-16">
+                <a href="index.html" class="brand-logo-link mb-10">
                     <div class="brand-logo-mark">
                         <svg class="brand-logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 14a6 6 0 1112 0v1H6v-1zm6 7a2 2 0 002-2h-4a2 2 0 002 2zm-8-6h16"></path>
                         </svg>
                     </div>
                     <span class="brand-logo-text brand-logo-text-theme">Attendant</span>
                 </a>
-                <nav class="space-y-4">
+                <nav class="space-y-3">
                     <button onclick="switchView('overview')" data-view="overview"
-                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all bg-accentGold text-white font-bold text-xs uppercase tracking-widest">
+                        class="view-trigger w-full text-left p-3 rounded-sm flex items-center gap-4 transition-all bg-accentGold text-white font-bold text-xs uppercase tracking-widest">
                         <span class="w-1.5 h-1.5 rounded-full bg-white"></span> Overview
                     </button>
                     <button onclick="switchView('submit')" data-view="submit"
-                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        class="view-trigger w-full text-left p-3 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
                         <span class="w-1.5 h-1.5 rounded-full bg-accentGold"></span> Request New
                     </button>
                     <button onclick="switchView('archive')" data-view="archive"
-                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        class="view-trigger w-full text-left p-3 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
                         <span class="w-1.5 h-1.5 rounded-full bg-accentGold/40"></span> Archive
                     </button>
                     <button onclick="switchView('chat')" data-view="chat"
-                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        class="view-trigger w-full text-left p-3 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
                         <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Active Liaison
                     </button>
                     <button onclick="switchView('studio')" data-view="studio"
-                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        class="view-trigger w-full text-left p-3 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
                         <span class="w-1.5 h-1.5 rounded-full bg-accentGold/40"></span> Gift Studio
                     </button>
                     <button onclick="switchView('map')" data-view="map"
-                        class="view-trigger w-full text-left p-4 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
+                        class="view-trigger w-full text-left p-3 rounded-sm flex items-center gap-4 transition-all text-white/40 hover:text-white font-bold text-xs uppercase tracking-widest">
                         <span class="w-1.5 h-1.5 rounded-full bg-accentGold/40"></span> Node Map
                     </button>
                 </nav>
@@ -437,11 +475,11 @@
                     <button type="button" class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors">
                         <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+                                d="M12 2.75v2.5m0 13.5v2.5M5.815 5.815l1.768 1.768m8.834 8.834 1.768 1.768M2.75 12h2.5m13.5 0h2.5M5.815 18.185l1.768-1.768m8.834-8.834 1.768-1.768M12 16a4 4 0 100-8 4 4 0 000 8z" />
                         </svg>
                         <svg class="moon-icon hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" />
                         </svg>
                     </button>
                     <button type="button" aria-label="Toggle RTL layout"
@@ -449,9 +487,9 @@
                 </div>
             </div>
 
-            <div class="mt-12 border-t border-white/5 pt-12 text-left">
+            <div class="mt-8 border-t border-white/5 pt-8 text-left">
                 <a href="index.html"
-                    class="mb-8 flex w-full items-center justify-between rounded-sm border border-red-400/30 px-4 py-4 text-[10px] uppercase font-bold tracking-widest text-red-400 transition-colors hover:border-red-300 hover:text-red-300">
+                    class="mb-6 flex w-full items-center justify-between rounded-sm border border-red-400/30 px-4 py-3 text-[10px] uppercase font-bold tracking-widest text-red-400 transition-colors hover:border-red-300 hover:text-red-300">
                     <span>Logout</span>
                     <span>&rarr;</span>
                 </a>
@@ -472,7 +510,7 @@
             <a href="index.html" class="brand-logo-link">
                 <div class="brand-logo-mark">
                     <svg class="brand-logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 14a6 6 0 1112 0v1H6v-1zm6 7a2 2 0 002-2h-4a2 2 0 002 2zm-8-6h16"></path>
                     </svg>
                 </div>
                 <span class="brand-logo-text brand-logo-text-theme">Attendant</span>
@@ -495,7 +533,7 @@
                 <a href="index.html" class="brand-logo-link mb-12">
                     <div class="brand-logo-mark">
                         <svg class="brand-logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 14a6 6 0 1112 0v1H6v-1zm6 7a2 2 0 002-2h-4a2 2 0 002 2zm-8-6h16"></path>
                         </svg>
                     </div>
                     <span class="brand-logo-text brand-logo-text-theme">Attendant</span>
@@ -531,11 +569,11 @@
                     <button type="button" class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors">
                         <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+                                d="M12 2.75v2.5m0 13.5v2.5M5.815 5.815l1.768 1.768m8.834 8.834 1.768 1.768M2.75 12h2.5m13.5 0h2.5M5.815 18.185l1.768-1.768m8.834-8.834 1.768-1.768M12 16a4 4 0 100-8 4 4 0 000 8z" />
                         </svg>
                         <svg class="moon-icon hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" />
                         </svg>
                     </button>
                     <button type="button" aria-label="Toggle RTL layout"
@@ -563,8 +601,8 @@
         </aside>
 
         <!-- Dashboard Content Container (Toggled) -->
-        <main class="dashboard-main flex-grow bg-darkBg p-12 lg:p-16 relative">
-            <div class="dashboard-topbar-controls absolute top-0 right-0 p-8 hidden lg:flex items-center gap-10 z-[100]">
+        <main class="dashboard-main flex-grow bg-darkBg p-8 lg:p-10 relative">
+            <div class="dashboard-topbar-controls absolute top-0 right-0 p-6 hidden lg:flex items-center gap-10 z-[100]">
                 <!-- Header Profile -->
                 <button onclick="switchView('profile')" data-view="profile"
                     class="view-trigger flex items-center gap-3 group">
@@ -579,10 +617,10 @@
                 <div class="dashboard-header-toggles flex items-center space-x-4 border-l border-white/10 pl-4 rtl:space-x-reverse rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4">
                     <button type="button" class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors">
                         <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.75v2.5m0 13.5v2.5M5.815 5.815l1.768 1.768m8.834 8.834 1.768 1.768M2.75 12h2.5m13.5 0h2.5M5.815 18.185l1.768-1.768m8.834-8.834 1.768-1.768M12 16a4 4 0 100-8 4 4 0 000 8z" />
                         </svg>
                         <svg class="moon-icon hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" />
                         </svg>
                     </button>
                     <button type="button" aria-label="Toggle RTL layout"
@@ -595,23 +633,23 @@
 
             <!-- View 1: Overview -->
             <section id="view-overview" class="view-section active">
-                <header class="mb-16">
+                <header class="mb-10">
                     <h1 class="font-cormorant text-6xl font-bold text-white mb-2 leading-none">Evening, Elena.</h1>
                     <p class="text-[11px] font-bold uppercase tracking-widest text-[#B8964E] font-outfit">Your dedicated
                         pod is online — 0 pending requests.</p>
                 </header>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-darkSurface p-10 border-2 border-accentGold rounded-sm shadow-xl animate-elevate">
-                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-accentGold mb-6">Time
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-darkSurface p-8 border-2 border-accentGold rounded-sm shadow-xl animate-elevate">
+                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-accentGold mb-4">Time
                             Restoration</h4>
                         <div class="font-cormorant text-6xl font-bold mb-4">42.5h</div>
                         <p class="text-xs text-white/40 leading-relaxed italic">Restored to you globally this quarter.
                         </p>
                     </div>
                     <div
-                        class="bg-darkSurface p-10 border border-white/5 rounded-sm hover:border-accentGold/20 transition-all">
-                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-6">Primary Concierge
+                        class="bg-darkSurface p-8 border border-white/5 rounded-sm hover:border-accentGold/20 transition-all">
+                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-4">Primary Concierge
                         </h4>
                         <div class="flex items-center gap-6"><img
                                 src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80"
@@ -623,22 +661,82 @@
                             </div>
                         </div>
                     </div>
+                    <div
+                        class="bg-darkSurface p-8 border border-white/5 rounded-sm hover:border-accentGold/20 transition-all md:col-span-2 lg:col-span-1">
+                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-4">Service Pulse
+                        </h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div
+                                    class="flex items-center justify-between text-[10px] uppercase font-bold tracking-widest mb-2">
+                                    <span class="text-white/40">Response Speed</span>
+                                    <span class="text-accentGold">14m Avg</span>
+                                </div>
+                                <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full w-[86%] bg-accentGold"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    class="flex items-center justify-between text-[10px] uppercase font-bold tracking-widest mb-2">
+                                    <span class="text-white/40">Completion Rate</span>
+                                    <span class="text-accentGold">98%</span>
+                                </div>
+                                <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full w-[98%] bg-accentGold"></div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-white/40 leading-relaxed italic">Service levels remain above target
+                                across errands, travel, and private requests.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-20">
-                    <h4
-                        class="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-10 border-b border-white/5 pb-4">
-                        Live Activity Feed</h4>
-                    <div class="space-y-6">
-                        <div
-                            class="flex items-start gap-8 opacity-40 hover:opacity-100 transition-all group cursor-pointer reveal">
-                            <span class="text-[10px] font-bold uppercase tracking-widest mt-1">Yesterday</span>
-                            <div>
-                                <h4
-                                    class="text-xs font-bold font-outfit uppercase tracking-widest mb-1 group-hover:text-accentGold transition-colors tracking-tight">
-                                    GIFT DISPATCHED</h4>
-                                <p class="text-sm font-light italic leading-loose">Bespoke hamper delivered to Regent's
-                                    Park address at 14:30. Mission accomplished.</p>
+                <div class="mt-10 grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-6">
+                    <div class="bg-darkSurface p-8 border border-white/5 rounded-sm">
+                        <h4
+                            class="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-6 border-b border-white/5 pb-3">
+                            Live Activity Feed</h4>
+                        <div class="space-y-5">
+                            <div
+                                class="flex items-start gap-6 opacity-50 hover:opacity-100 transition-all group cursor-pointer reveal">
+                                <span class="text-[10px] font-bold uppercase tracking-widest mt-1">Yesterday</span>
+                                <div>
+                                    <h4
+                                        class="text-xs font-bold font-outfit uppercase tracking-widest mb-1 group-hover:text-accentGold transition-colors tracking-tight">
+                                        Gift Dispatched</h4>
+                                    <p class="text-sm font-light italic leading-relaxed">Bespoke hamper delivered to
+                                        Regent's Park address at 14:30. Mission accomplished.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-start gap-6 opacity-50 hover:opacity-100 transition-all group cursor-pointer reveal">
+                                <span class="text-[10px] font-bold uppercase tracking-widest mt-1">Today</span>
+                                <div>
+                                    <h4
+                                        class="text-xs font-bold font-outfit uppercase tracking-widest mb-1 group-hover:text-accentGold transition-colors tracking-tight">
+                                        Travel Brief Locked</h4>
+                                    <p class="text-sm font-light italic leading-relaxed">Airport transfer and meeting-room
+                                        setup confirmed for Monday 09:00 departure.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-darkSurface p-8 border border-white/5 rounded-sm">
+                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-5">Today at a Glance</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                                <span class="text-xs uppercase tracking-widest text-white/40">Open Threads</span>
+                                <span class="font-cormorant text-3xl">3</span>
+                            </div>
+                            <div class="flex items-center justify-between border-b border-white/5 pb-3">
+                                <span class="text-xs uppercase tracking-widest text-white/40">Dispatches</span>
+                                <span class="font-cormorant text-3xl">7</span>
+                            </div>
+                            <div class="flex items-center justify-between pb-1">
+                                <span class="text-xs uppercase tracking-widest text-white/40">SLA Risk</span>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-green-400">None</span>
                             </div>
                         </div>
                     </div>
@@ -966,3 +1064,4 @@
 </body>
 
 </html>
+

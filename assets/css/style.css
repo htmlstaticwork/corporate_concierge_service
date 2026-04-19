@@ -40,6 +40,41 @@ h4,
     --nav-icon-color: #0D1B2A;
 }
 
+/* HEADER THEME CONTROL */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgba(13, 27, 42, 0.18);
+    border-radius: 0.45rem;
+    background: rgba(13, 27, 42, 0.02);
+    transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.theme-toggle:hover {
+    border-color: rgba(184, 150, 78, 0.72);
+    background: rgba(184, 150, 78, 0.1);
+}
+
+[data-theme="dark"] .theme-toggle {
+    border-color: rgba(240, 237, 232, 0.24);
+    background: rgba(240, 237, 232, 0.04);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    border-color: rgba(184, 150, 78, 0.8);
+    background: rgba(184, 150, 78, 0.16);
+}
+
+.theme-toggle .sun-icon,
+.theme-toggle .moon-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    stroke-width: 1.85;
+}
+
 [data-theme="dark"] .brand-logo-text-theme {
     color: #F0EDE8;
 }
@@ -53,13 +88,37 @@ h4,
 .brand-logo-mark {
     width: 2.5rem;
     height: 2.5rem;
-    border: 2px solid #B8964E;
-    border-radius: 0.125rem;
+    border: 1.5px solid rgba(184, 150, 78, 0.8);
+    border-radius: 0.375rem;
+    background: linear-gradient(145deg, rgba(184, 150, 78, 0.16), rgba(184, 150, 78, 0.04));
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: transform 0.3s ease;
+    box-shadow: 0 8px 18px rgba(13, 27, 42, 0.12), inset 0 0 0 1px rgba(184, 150, 78, 0.12);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="dark"] .brand-logo-mark {
+    border-color: rgba(184, 150, 78, 0.88);
+    background: linear-gradient(145deg, rgba(184, 150, 78, 0.22), rgba(184, 150, 78, 0.07));
+}
+
+.public-nav .group > .w-10.h-10.border-2.border-accentGold {
+    border-width: 1.5px;
+    border-radius: 0.375rem;
+    border-color: rgba(184, 150, 78, 0.82);
+    background: linear-gradient(145deg, rgba(184, 150, 78, 0.16), rgba(184, 150, 78, 0.04));
+    box-shadow: 0 8px 18px rgba(13, 27, 42, 0.12), inset 0 0 0 1px rgba(184, 150, 78, 0.12);
+}
+
+[data-theme="dark"] .public-nav .group > .w-10.h-10.border-2.border-accentGold {
+    border-color: rgba(184, 150, 78, 0.9);
+    background: linear-gradient(145deg, rgba(184, 150, 78, 0.22), rgba(184, 150, 78, 0.08));
+}
+
+.public-nav .group > .w-10.h-10.border-2.border-accentGold > svg {
+    stroke-width: 1.85;
 }
 
 .brand-logo-link:hover .brand-logo-mark {

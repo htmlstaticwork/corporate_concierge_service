@@ -21,24 +21,116 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .auth-bg {
-            background-image: linear-gradient(to right, rgba(7, 15, 26, 0.95), rgba(7, 15, 26, 0.7)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1600&q=80');
+            --auth-overlay-start: rgba(7, 15, 26, 0.95);
+            --auth-overlay-end: rgba(7, 15, 26, 0.7);
+            --auth-text: #F0EDE8;
+            --auth-muted: rgba(240, 237, 232, 0.62);
+            --auth-weak: rgba(240, 237, 232, 0.36);
+            --auth-border: rgba(184, 150, 78, 0.22);
+            --auth-surface: rgba(255, 255, 255, 0.05);
+            --auth-surface-hover: rgba(255, 255, 255, 0.1);
+            --auth-card-bg: rgba(13, 27, 46, 0.84);
+            background-image: linear-gradient(to right, var(--auth-overlay-start), var(--auth-overlay-end)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1600&q=80');
             background-size: cover;
             background-position: center;
+        }
+
+        [data-theme="light"] .auth-bg {
+            --auth-overlay-start: rgba(249, 247, 244, 0.94);
+            --auth-overlay-end: rgba(249, 247, 244, 0.68);
+            --auth-text: #0D1B2A;
+            --auth-muted: rgba(13, 27, 42, 0.64);
+            --auth-weak: rgba(13, 27, 42, 0.42);
+            --auth-border: rgba(13, 27, 42, 0.2);
+            --auth-surface: rgba(13, 27, 42, 0.05);
+            --auth-surface-hover: rgba(13, 27, 42, 0.1);
+            --auth-card-bg: rgba(249, 247, 244, 0.9);
+        }
+
+        .auth-controls {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 50;
+        }
+
+        [dir="rtl"] .auth-controls {
+            right: auto;
+            left: 1.5rem;
+        }
+
+        .auth-control-btn {
+            color: var(--auth-muted);
+        }
+
+        .auth-control-btn:hover {
+            color: #B8964E;
+        }
+
+        .auth-card {
+            background-color: var(--auth-card-bg) !important;
+            border-color: var(--auth-border) !important;
+            color: var(--auth-text);
+        }
+
+        .auth-brand-text {
+            color: var(--auth-text) !important;
+        }
+
+        .auth-social-btn {
+            background-color: var(--auth-surface) !important;
+            border-color: var(--auth-border) !important;
+            color: var(--auth-muted) !important;
+        }
+
+        .auth-social-btn:hover {
+            background-color: var(--auth-surface-hover) !important;
+            border-color: #B8964E !important;
+            color: var(--auth-text) !important;
+        }
+
+        .auth-divider {
+            color: var(--auth-weak) !important;
+        }
+
+        .auth-divider-line {
+            background-color: var(--auth-border) !important;
+        }
+
+        .auth-input {
+            background-color: var(--auth-surface) !important;
+            border-color: var(--auth-border) !important;
+            color: var(--auth-text) !important;
+        }
+
+        .auth-input::placeholder {
+            color: var(--auth-muted) !important;
+        }
+
+        .auth-check {
+            border-color: var(--auth-border) !important;
+            background-color: var(--auth-surface) !important;
+        }
+
+        .auth-muted {
+            color: var(--auth-muted) !important;
         }
     </style>
 </head>
 
-<body class="font-outfit antialiased bg-darkBg text-darkText min-h-screen flex items-center justify-center p-4 auth-bg transition-colors duration-300">
+<body class="auth-page font-outfit antialiased bg-darkBg text-darkText min-h-screen flex items-center justify-center p-4 auth-bg transition-colors duration-300">
+    <div class="auth-controls">
+        <button class="theme-toggle auth-control-btn w-6 h-6 p-0 transition-colors" aria-label="Toggle Theme">
+            <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.75v2.5m0 13.5v2.5M5.815 5.815l1.768 1.768m8.834 8.834 1.768 1.768M2.75 12h2.5m13.5 0h2.5M5.815 18.185l1.768-1.768m8.834-8.834 1.768-1.768M12 16a4 4 0 100-8 4 4 0 000 8z"/></svg>
+            <svg class="moon-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+        </button>
+        <button class="rtl-toggle auth-control-btn w-6 h-6 font-bold text-xs" aria-label="Toggle RTL">RTL</button>
+    </div>
     <div
-        class="w-full max-w-md bg-darkSurface/80 p-12 border border-accentGold/20 backdrop-blur-xl reveal rounded-sm shadow-2xl relative">
-        <!-- Theme & RTL Toggles -->
-        <div class="absolute top-6 right-6 flex items-center space-x-4 z-20">
-            <button class="theme-toggle w-6 h-6 p-0 hover:text-accentGold transition-colors text-white/50" aria-label="Toggle Theme">
-                <svg class="sun-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
-                <svg class="moon-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-            </button>
-            <button class="rtl-toggle w-6 h-6 font-bold text-xs hover:text-accentGold text-white/50" aria-label="Toggle RTL">RTL</button>
-        </div>
+        class="auth-card w-full max-w-md bg-darkSurface/80 p-12 border border-accentGold/20 backdrop-blur-xl reveal rounded-sm shadow-2xl relative">
         <div
             class="absolute top-0 right-0 w-32 h-32 bg-accentGold/5 -translate-y-16 translate-x-16 rotate-45 pointer-events-none">
         </div>
@@ -47,10 +139,10 @@
             <a href="index.html" class="mb-6 inline-flex items-center justify-center gap-2 group">
                 <div class="w-10 h-10 border-2 border-accentGold rounded-sm flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
                     <svg class="w-6 h-6 text-accentGold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 14a6 6 0 1112 0v1H6v-1zm6 7a2 2 0 002-2h-4a2 2 0 002 2zm-8-6h16"></path>
                     </svg>
                 </div>
-                <span class="font-cormorant text-2xl font-bold tracking-tight text-darkText uppercase">Attendant</span>
+                <span class="auth-brand-text font-cormorant text-2xl font-bold tracking-tight text-darkText uppercase">Attendant</span>
             </a>
             <h1 class="font-cormorant text-2xl font-semibold opacity-60 italic mb-2 tracking-tight">Welcome to the Node.
             </h1>
@@ -61,31 +153,31 @@
             <div class="space-y-4">
                 <div class="grid grid-cols-3 gap-3">
                     <a href="#" aria-label="Continue with Google"
-                        class="flex items-center justify-center gap-2 rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white/80 transition-all hover:border-accentGold hover:bg-white/10 hover:text-white">
+                        class="auth-social-btn flex items-center justify-center gap-2 rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white/80 transition-all hover:border-accentGold hover:bg-white/10 hover:text-white">
                         <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.5 3.9-5.5 3.9-3.3 0-6-2.8-6-6.2s2.7-6.2 6-6.2c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.8 3 14.7 2 12 2 6.9 2 2.8 6.3 2.8 11.7S6.9 21.3 12 21.3c6.9 0 8.6-4.9 8.6-7.4 0-.5 0-.9-.1-1.2H12z"/>
                         </svg>
                         <span class="sr-only">Google</span>
                     </a>
                     <a href="#" aria-label="Continue with Facebook"
-                        class="flex items-center justify-center gap-2 rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white/80 transition-all hover:border-accentGold hover:bg-white/10 hover:text-white">
+                        class="auth-social-btn flex items-center justify-center gap-2 rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white/80 transition-all hover:border-accentGold hover:bg-white/10 hover:text-white">
                         <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill="#1877F2" d="M24 12.1C24 5.4 18.6 0 12 0S0 5.4 0 12.1c0 6 4.4 11 10.1 12v-8.4H7.1v-3.6h3V9.3c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.3h3.4l-.5 3.6h-2.9v8.4C19.6 23.1 24 18.1 24 12.1z"/>
                         </svg>
                         <span class="sr-only">Facebook</span>
                     </a>
                     <a href="#" aria-label="Continue with LinkedIn"
-                        class="flex items-center justify-center gap-2 rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white/80 transition-all hover:border-accentGold hover:bg-white/10 hover:text-white">
+                        class="auth-social-btn flex items-center justify-center gap-2 rounded-sm border border-white/10 bg-white/5 px-4 py-3 text-white/80 transition-all hover:border-accentGold hover:bg-white/10 hover:text-white">
                         <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill="#0A66C2" d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.05-1.86-3.05-1.87 0-2.15 1.45-2.15 2.95v5.68H9.32V9h3.42v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.3 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.08 20.45H3.52V9h3.56v11.45z"/>
                         </svg>
                         <span class="sr-only">LinkedIn</span>
                     </a>
                 </div>
-                <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
-                    <span class="h-px flex-1 bg-white/10"></span>
+                <div class="auth-divider flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
+                    <span class="auth-divider-line h-px flex-1 bg-white/10"></span>
                     <span>Or use email</span>
-                    <span class="h-px flex-1 bg-white/10"></span>
+                    <span class="auth-divider-line h-px flex-1 bg-white/10"></span>
                 </div>
             </div>
 
@@ -95,7 +187,7 @@
                         class="text-[9px] font-bold uppercase tracking-widest text-[#B8964E] mb-2 block transition-all group-focus-within:text-white">Work
                         Email Address</label>
                     <input type="email"
-                        class="w-full bg-white/5 border-b border-white/10 py-3 text-sm focus:border-accentGold focus:outline-none focus:bg-white/10 transition-all rounded-sm px-2"
+                        class="auth-input w-full bg-white/5 border-b border-white/10 py-3 text-sm focus:border-accentGold focus:outline-none focus:bg-white/10 transition-all rounded-sm px-2"
                         placeholder="e.g. ward@meridian.com" required>
                 </div>
                 <div class="relative group">
@@ -108,15 +200,15 @@
                             Key?</a>
                     </div>
                     <input type="password"
-                        class="w-full bg-white/5 border-b border-white/10 py-3 text-sm focus:border-accentGold focus:outline-none focus:bg-white/10 transition-all rounded-sm px-2"
+                        class="auth-input w-full bg-white/5 border-b border-white/10 py-3 text-sm focus:border-accentGold focus:outline-none focus:bg-white/10 transition-all rounded-sm px-2"
                         placeholder="••••••••" required>
                 </div>
             </div>
 
             <label for="remember-me"
-                class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50 cursor-pointer">
+                class="auth-muted flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/50 cursor-pointer">
                 <input id="remember-me" name="remember-me" type="checkbox"
-                    class="h-4 w-4 rounded-sm border border-white/20 bg-white/5 text-accentGold focus:ring-2 focus:ring-accentGold">
+                    class="auth-check h-4 w-4 rounded-sm border border-white/20 bg-white/5 text-accentGold focus:ring-2 focus:ring-accentGold">
                 <span>Remember me</span>
             </label>
 
@@ -132,7 +224,7 @@
             </div>
         </form>
 
-        <footer class="mt-12 text-center text-[10px] font-bold uppercase tracking-[0.3em] opacity-20 select-none">
+        <footer class="auth-muted mt-12 text-center text-[10px] font-bold uppercase tracking-[0.3em] opacity-20 select-none">
             DISCREET • SECURE • ATTENTIVE</footer>
     </div>
 
@@ -140,3 +232,5 @@
 </body>
 
 </html>
+
+
