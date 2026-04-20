@@ -113,6 +113,41 @@
             color: #F0EDE8 !important;
         }
 
+        .home2-chip-scroll-row {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 1023px) {
+            .home2-chip-scroll-row {
+                overflow-x: auto;
+                overflow-y: hidden;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(184, 150, 78, 0.75) rgba(13, 27, 42, 0.12);
+            }
+
+            .home2-chip-scroll-row::-webkit-scrollbar {
+                height: 6px;
+            }
+
+            .home2-chip-scroll-row::-webkit-scrollbar-track {
+                background: rgba(13, 27, 42, 0.12);
+                border-radius: 999px;
+            }
+
+            .home2-chip-scroll-row::-webkit-scrollbar-thumb {
+                background: rgba(184, 150, 78, 0.75);
+                border-radius: 999px;
+            }
+
+            [data-theme="dark"] .home2-chip-scroll-row::-webkit-scrollbar-track {
+                background: rgba(240, 237, 232, 0.16);
+            }
+
+            [data-theme="dark"] .home2-chip-scroll-row::-webkit-scrollbar-thumb {
+                background: rgba(184, 150, 78, 0.92);
+            }
+        }
+
         [data-theme="dark"] .home2-split-section {
             background-color: #070F1A;
         }
@@ -473,7 +508,7 @@
         <!-- SECTION 1: SERVICE CHIPS CAROUSEL -->
         <section class="home2-chip-section py-12 bg-white dark:bg-darkSurface transition-colors overflow-hidden">
             <div class="container mx-auto px-4 md:px-8 lg:px-12">
-                <div class="flex items-center space-x-6 overflow-x-auto pb-4 no-scrollbar cursor-grab active:cursor-grabbing"
+                <div class="home2-chip-scroll-row flex items-center space-x-6 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing"
                     id="service-chips-row">
                     <div
                         class="home2-chip-pill flex-none flex items-center gap-4 bg-secondary dark:bg-darkCard px-6 py-3 rounded-full border border-accentGold/20 hover:border-accentGold transition-all group cursor-pointer active shadow-sm">
